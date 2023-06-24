@@ -1,0 +1,71 @@
+import styled from "styled-components";
+
+export const Main = styled.div.attrs({
+    className : ` mr-[50px] ml-[330px] mt-[16px] text-sm w-full `
+})`
+    color : ${({theme}) => theme.colors.text.dark.primary};
+`
+
+export const Head = styled.div.attrs({
+    className : `Head cursor-default`
+})``
+
+export const title = styled.div.attrs({
+    className : `title font-bold text-base `
+})``
+
+export const Subtitle = styled.div.attrs({
+    className : `Subtitle text-[11px] font-semibold flex mb-[10px]`
+})`
+    color : ${({theme}) => theme.colors.text.dark.tetiary};
+`
+
+export const Switcher = styled.div.attrs({
+    className : `Switcher flex p-[5px] mb-[20px] font-semibold text-xs gap-1 h-[40px] w-[130px] flex items-center justify-center rounded-full`
+})
+`
+    color : ${({theme}) => theme.colors.text.light.white};
+    background : ${({theme}) => theme.colors.background.light.primary};
+`
+
+export const Mcqs = styled.div.attrs({
+    className : `Mcqs w-full h-full cursor-pointer duration-300 rounded-full flex items-center justify-center`
+})<{mcqs? : boolean}>
+`
+    &:hover{
+        background : ${({theme, mcqs}) => !mcqs && theme.colors.background.light.secondary};
+    }
+    color : ${({theme, mcqs}) => !mcqs && theme.colors.text.dark.primary};
+    background : ${({theme, mcqs}) => mcqs && theme.colors.main.primary};
+`
+
+export const Test = styled.div.attrs({
+    className : `Test w-full h-full cursor-pointer duration-500 rounded-full flex items-center justify-center`
+})<{mcqs? : boolean}>
+`
+    &:hover{
+        background : ${({theme, mcqs}) => mcqs && theme.colors.background.light.secondary};
+    }
+    color : ${({theme, mcqs}) => mcqs && theme.colors.text.dark.primary};
+    background : ${({theme, mcqs}) => !mcqs && theme.colors.main.primary};
+`
+
+export const Body = styled.div.attrs({
+    className : `Body flex gap-7 justify-between w-full`
+})``
+
+export const Left = styled.div.attrs({
+    className : `Left w-full rounded-[10px]`
+})`
+`
+
+export const Right = styled.div.attrs({
+    className : `Right w-[300px] h-[400px] mt-[-100px] rounded-[10px] flex flex col justify-center items-center`
+})`
+    background : ${({theme}) => theme.colors.background.light.primary};
+`
+
+export const nameHere = styled.div.attrs({
+    className : ``
+})`
+`
