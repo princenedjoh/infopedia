@@ -50,7 +50,9 @@ const TopBar = () => {
       <topBarStyle.Main>
         <topBarStyle.Logo>
             <topBarStyle.LogoImg src = {svgs.logoImg}/>
-            <topBarStyle.LogoImg src = {svgs.infoPedia}/>
+            <topBarStyle.LogoText>
+                PrepRoom
+            </topBarStyle.LogoText>
         </topBarStyle.Logo>
         <topBarStyle.Right>
             <topBarStyle.SearchBar>

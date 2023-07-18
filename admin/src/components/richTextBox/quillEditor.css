@@ -1,0 +1,15 @@
+.ql-bubble .ql-editor {
+    position: relative;
+    z-index: 0;
+}
+
+.ql-bubble .ql-tooltip {
+    background-color: #008000;
+    z-index: 1;
+    left: 0 !important;
+    display: block;
+}
+
+.ql-bubble .ql-tooltip-arrow{
+    left: 8% !important;
+}

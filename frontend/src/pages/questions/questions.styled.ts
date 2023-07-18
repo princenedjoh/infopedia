@@ -60,7 +60,13 @@ export const Left = styled.div.attrs({
 `
 
 export const Right = styled.div.attrs({
-    className : `Right w-[300px] h-[400px] mt-[-100px] rounded-[10px] flex flex col justify-center items-center`
+    className : `Right w-[300px] mt-[-100px]`
+})`
+    
+`
+
+export const Ads = styled.div.attrs({
+    className : `Ads w-full h-[400px] rounded-[10px] flex flex-col justify-center items-center`
 })`
     background : ${({theme}) => theme.colors.background.light.primary};
 `

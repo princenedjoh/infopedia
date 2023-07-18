@@ -2,6 +2,11 @@ import { Outlet } from 'react-router'
 import * as sideBarStyle from './sideBar.styled'
 import { RiMapPinUserFill } from 'react-icons/ri'
 import { Fragment, useState } from 'react'
+import { MdScience, MdEngineering, MdBusinessCenter } from "react-icons/md"
+import { TbMathSymbols } from "react-icons/tb"
+import { RiPlantFill } from "react-icons/ri"
+import { FaPaintRoller } from "react-icons/fa"
+import { IoCaretForwardOutline } from 'react-icons/io5'
 
 let programHover2 = false
 
@@ -16,22 +21,38 @@ const SideBar = () => {
         {
             name : 'SCIENCES',
             active : false,
-            count : 0
+            count : 0,
+            icon : MdScience,
         },
         {
             name : 'ARTS',
             active : false,
-            count : 0
+            count : 0,
+            icon : FaPaintRoller,
         },
         {
             name : 'ENGINEERING',
             active : false,
-            count : 0
+            count : 0,
+            icon : MdEngineering,
         },
         {
             name : 'BUSINESS',
             active : false,
-            count : 0
+            count : 0,
+            icon : MdBusinessCenter,
+        },
+        {
+            name : 'MATHEMATICS',
+            active : false,
+            count : 0,
+            icon : TbMathSymbols,
+        },
+        {
+            name : 'AGRICULTURE',
+            active : false,
+            count : 0,
+            icon : RiPlantFill,
         },
     ])
 
@@ -283,12 +304,21 @@ const SideBar = () => {
                                 onClick={()=>branchClick(branchMap.name)}
                                 active={branchMap.active}
                             >
-                                <sideBarStyle.BranchIcon>
-
-                                </sideBarStyle.BranchIcon>
-                                <sideBarStyle.BranchName>
-                                    {branchMap.name}
-                                </sideBarStyle.BranchName>
+                                <sideBarStyle.BranchLeft>
+                                    <sideBarStyle.BranchIcon>
+                                        < branchMap.icon 
+                                            size={"25px"}
+                                        />
+                                    </sideBarStyle.BranchIcon>
+                                    <sideBarStyle.BranchName>
+                                        {branchMap.name}
+                                    </sideBarStyle.BranchName>
+                                </sideBarStyle.BranchLeft>
+                                <sideBarStyle.BranchButton
+                                    active={branchMap.active}
+                                >
+                                    <IoCaretForwardOutline/>
+                                </sideBarStyle.BranchButton>
                             </sideBarStyle.BranchInfo>
                             <sideBarStyle.Programs>
                                 {
