@@ -3,6 +3,8 @@ import QuillEditorTextbox from '../quillEditor'
 import GeneralQuillEditorTextbox from '../generalQuillEditor/quillEditor'
 import { alphabets } from '../../../pages/questions/questions'
 import { useEffect, useState } from 'react'
+import { Markup } from 'interweave'
+import { MdCancel } from 'react-icons/md'
 
 const TextBox = () => {
 
@@ -50,13 +52,10 @@ const TextBox = () => {
                     <textBoxStyle.Title>
                         Question
                     </textBoxStyle.Title>
-                    <textBoxStyle.EditorButtons>
-
-                    </textBoxStyle.EditorButtons>
+                    <textBoxStyle.Question>
+                        <GeneralQuillEditorTextbox/>
+                    </textBoxStyle.Question>
                 </textBoxStyle.QuestionTop>
-                <textBoxStyle.Question>
-                    <GeneralQuillEditorTextbox/>
-                </textBoxStyle.Question>
                 <textBoxStyle.PossibleAnswers>
                     <textBoxStyle.AnswerTiltle>
                         Answers
@@ -98,6 +97,44 @@ const TextBox = () => {
                             +
                         </textBoxStyle.AddAnswer>
                     </textBoxStyle.Answers>
+                </textBoxStyle.PossibleAnswers>
+
+                {/* programs */}
+                <textBoxStyle.PossibleAnswers>
+                    <textBoxStyle.ProgamsTitle>
+                        Programs
+                    </textBoxStyle.ProgamsTitle>
+                    <textBoxStyle.ProgramContainer>
+                        <textBoxStyle.ProgramHeads>
+                            program name
+                            <MdCancel
+                                size={"16px"}
+                                opacity={0.5}
+                            />
+                        </textBoxStyle.ProgramHeads>
+                        <textBoxStyle.ProgramInput
+                            placeholder='search course name'
+                        />
+                    </textBoxStyle.ProgramContainer>
+                </textBoxStyle.PossibleAnswers>
+
+                {/* courses */}
+                <textBoxStyle.PossibleAnswers>
+                    <textBoxStyle.ProgamsTitle>
+                        Courses
+                    </textBoxStyle.ProgamsTitle>
+                    <textBoxStyle.ProgramContainer>
+                        <textBoxStyle.ProgramHeads>
+                            Course Name
+                            <MdCancel
+                                size={"16px"}
+                                opacity={0.5}
+                            />
+                        </textBoxStyle.ProgramHeads>
+                        <textBoxStyle.ProgramInput
+                            placeholder='search course name'
+                        />
+                    </textBoxStyle.ProgramContainer>
                 </textBoxStyle.PossibleAnswers>
                 <textBoxStyle.SaveQuestion>
                     SAVE QUESTION

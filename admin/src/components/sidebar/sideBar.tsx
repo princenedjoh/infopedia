@@ -1,15 +1,18 @@
 import { Outlet } from 'react-router'
 import * as sideBarStyle from './sideBar.styled'
-import { RiMapPinUserFill } from 'react-icons/ri'
+import { RiAdminFill, RiMapPinUserFill } from 'react-icons/ri'
 import { Fragment, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { RiBankFill } from "react-icons/ri"
 import { AiTwotoneFlag } from "react-icons/ai"
 import { FaPaintRoller } from "react-icons/fa"
 import { IoCaretForwardOutline } from 'react-icons/io5'
+import { MdAdminPanelSettings, MdSupervisorAccount } from 'react-icons/md'
 
 let programHover2 = false
 
 const SideBar = () => {
+    const navigate = useNavigate()
 
     interface coursesInterface {
         course : string,
@@ -18,16 +21,49 @@ const SideBar = () => {
 
     const [branch, setBranch] = useState([
         {
-            name : 'QUESTION BANK',
+            name : 'SCIENCES',
             active : false,
+            show : true,
             count : 0,
             icon : RiBankFill,
+            expandable : true,
+            route : "",
         },
         {
             name : 'FLAGS',
             active : false,
+            show : true,
             count : 0,
             icon : AiTwotoneFlag,
+            expandable : true,
+            route : "",
+        },
+        {
+            name : 'ADMINISTRATORS',
+            active : false,
+            show : true,
+            count : 0,
+            icon : MdAdminPanelSettings,
+            expandable : false,
+            route : '/users/administrators'
+        },
+        {
+            name : 'SUPERVISORS',
+            active : false,
+            show : true,
+            count : 0,
+            icon : RiAdminFill,
+            expandable : false,
+            route : '/users/supervisors'
+        },
+        {
+            name : 'MODERATORS',
+            active : false,
+            show : true,
+            count : 0,
+            icon : MdSupervisorAccount,
+            expandable : false,
+            route : '/users/moderators'
         },
     ])
 
@@ -241,9 +277,19 @@ const SideBar = () => {
     const branchClick = (name : string)=>{
         let branchCopy = branch
         for(const i in branchCopy){
-            branchCopy[i].name == name ?
-            branchCopy[i].active = !branchCopy[i].active :
-            branchCopy[i].active = false
+            if(branchCopy[i].expandable){
+                if(branchCopy[i].name === name){
+                    branchCopy[i].active = !branchCopy[i].active
+                }
+                else{
+                    branchCopy[i].active = false
+                }
+            }
+            else{
+                if(branchCopy[i].name === name){
+                    navigate(branchCopy[i].route)
+                }
+            }
         }
         setBranch([...branchCopy])
     }
@@ -272,7 +318,7 @@ const SideBar = () => {
                     return(
                         <sideBarStyle.Branch
                                 key={index}
-                                active={branchMap.active}
+                                active={branchMap.expandable? branchMap.active : false}
                                 height={(branchMap.count+1)*42}
                             >
                             <sideBarStyle.BranchInfo
@@ -295,11 +341,14 @@ const SideBar = () => {
                                         </sideBarStyle.FlagNotifications>
                                     }
                                 </sideBarStyle.BranchLeft>
-                                <sideBarStyle.BranchButton
-                                    active={branchMap.active}
-                                >
-                                    <IoCaretForwardOutline/>
-                                </sideBarStyle.BranchButton>
+                                {
+                                    branchMap.expandable &&
+                                    <sideBarStyle.BranchButton
+                                        active={branchMap.active}
+                                    >
+                                        <IoCaretForwardOutline/>
+                                    </sideBarStyle.BranchButton>
+                                }
                             </sideBarStyle.BranchInfo>
                             <sideBarStyle.Programs>
                                 {

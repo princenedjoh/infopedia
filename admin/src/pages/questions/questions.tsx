@@ -119,10 +119,10 @@ const Questions = () => {
 
             </questionsStyle.WhiteSpcace>
           </questionsStyle.MainRight>
-        </questionsStyle.Main>
           <questionsStyle.Ads>
             ADS
           </questionsStyle.Ads>
+        </questionsStyle.Main>
       </questionsStyle.MainContainer>
     </>
   )

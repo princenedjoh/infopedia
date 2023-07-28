@@ -2,7 +2,6 @@ import ReactQuill from 'react-quill';
 import './quillEditor.css'
 import 'react-quill/dist/quill.bubble.css';
 import * as QuillEditorStyle from './quillEditor.style'
-import QuillToolbar from './editorToolbar';
 import React, { useState, useEffect } from 'react';
 import { Markup } from 'interweave';
 

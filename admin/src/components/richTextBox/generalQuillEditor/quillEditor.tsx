@@ -21,7 +21,7 @@ const GeneralQuillEditorTextbox = ({}) => {
     'link', 'image'
     ]
 
-    const [quillValue, setQuillValue] = useState("general")
+    const [quillValue, setQuillValue] = useState("")
 
     return (
         <>

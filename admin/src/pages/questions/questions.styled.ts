@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.div.attrs({
-    className : `MainContainer w-full pr-[50px]
+    className : `MainContainer w-full pr-[35px]
     pt-[25px] flex justify-between gap-5 `
 })``
 
@@ -13,11 +13,19 @@ export const Main = styled.div.attrs({
 `
 
 export const MainLeft = styled.div.attrs({
-    className : `MainLeft w-[420px] justify-between h-screen`
+    className : `MainLeft min-w-[310px] justify-between h-screen`
 })``
 
+export const Ads = styled.div.attrs({
+    className : `Ads min-w-[280px] h-[80vh] bg-green-500 rounded-[10px]
+    flex justify-center items-center`
+})`
+    background : ${({theme}) => theme.colors.background.light.primary};
+`
+
 export const MainRight = styled.div.attrs({
-    className : `MainRight text-xs w-full flex flex-col gap-5`
+    className : `MainRight text-xs w-full  flex flex-col gap-5 
+    min-w-[0px]`
 })``
 
 export const Top = styled.div.attrs({
@@ -25,19 +33,12 @@ export const Top = styled.div.attrs({
 })``
 
 export const Bottom = styled.div.attrs({
-    className : `Bottom w-full flex flex-col`
+    className : `Bottom flex flex-col min-w-[0px]`
 })``
 
 export const WhiteSpcace = styled.div.attrs({
     className : `WhiteSpcace  w-full bg-red-300 `
 })``
-
-export const Ads = styled.div.attrs({
-    className : `Ads w-[300px] h-[80vh] bg-green-500 rounded-[10px]
-    flex justify-center items-center`
-})`
-    background : ${({theme}) => theme.colors.background.light.primary};
-`
 
 export const QuestionContainer = styled.div.attrs({
     className : `QeustionContainer  p-[13px] rounded-[10px] w-full flex flex-col hover:shadow`

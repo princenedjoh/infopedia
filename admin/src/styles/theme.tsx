@@ -1,7 +1,7 @@
 const theme = {
     colors : {
         main : {
-            primary : 'green',
+            primary : '#6969F4',
             secondary : '#e0e0ff'
         },
         background : {
@@ -40,7 +40,8 @@ const theme = {
             dark : {
                 black : "#000000",
                 primary : "#242424",
-                secondary : "#696969"
+                secondary : "#696969",
+                tetiary : "#ababab"
             }
         },
         buttons : {

@@ -23,12 +23,22 @@ const standAloneRoute = [
     {
         path : '/notification',
         route : Notification
+    },
+    {
+        path : '/users/administrators',
+        route : Notification
+    },
+    {
+        path : '/users/supervisors',
+        route : Notification
+    },
+    {
+        path : '/users/moderators',
+        route : Notification
     }
 ]
 
 const DefaultRoute = () => {
-    const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
-    const [viewPortheight, setViewPortheight] = useState(window.innerHeight);
 
     return(
         <routerStyle.Main>

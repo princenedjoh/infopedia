@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Main = styled.div.attrs({
-    className : `Main w-full flex flex-col gap-2 py-[15px] 
+    className : `Main w-full flex flex-col gap-5 py-[15px] 
     px-[15px] rounded-[10px] hover:shadow`
 })`
     background : ${({theme}) => theme.colors.background.light.primary};
@@ -9,21 +9,18 @@ export const Main = styled.div.attrs({
 `
 
 export const QuestionTop = styled.div.attrs({
-    className : `QuestionTop `
+    className : `QuestionTop flex flex-col gap-2`
 })``
 
 export const Title = styled.div.attrs({
-    className : `Title rounded-full w-[90px] flex items-center pb-[7px] pt-[6px] font-semibold justify-center`
+    className : `Title rounded-full w-[80px] flex items-center 
+    pb-[5px] pt-[4px] font-semibold justify-center`
 })`
     background : ${({theme}) => theme.colors.background.light.white};
 `
 
-export const EditorButtons = styled.div.attrs({
-    className : `EditorButtons `
-})``
-
 export const Question = styled.div.attrs({
-    className : `Question p-[0px] rounded-[5px] mb-[15px]`
+    className : `Question p-[0px] rounded-[5px]`
 })`
      background : ${({theme}) => theme.colors.background.light.white};
 `
@@ -85,7 +82,7 @@ export const Radio = styled.input.attrs({
 })``
 
 export const Answer = styled.div.attrs({
-    className : `Answer duration-300 rounded-[5px] w-full`
+    className : `Answer duration-300 rounded-[5px] w-full min-w-[0px]`
 })`
     background : ${({theme}) => theme.colors.background.light.primary};
 `
@@ -102,3 +99,27 @@ export const SaveQuestion = styled.div.attrs({
         color : ${({theme}) => theme.colors.background.light.white};
     }
 `
+ export const ProgramContainer = styled.div.attrs({
+    className : ` ProgramContainer w-full p-[10px] flex rounded-[5px]
+    h-[50px] items-center`
+ })`
+    background : ${({theme}) => theme.colors.background.light.white};
+ `
+
+ export const ProgramHeads = styled.div.attrs({
+    className : ` ProgramHeads rounded-full px-[10px] font-semibold text-[9px]
+    shadow cursor-pointer hover:scale-[0.95] flex h-[30px] flex justify-center
+    items-center pb-[3px] gap-1`
+ })`
+    border : ${({theme}) => `1px solid ${theme.colors.border.dark.tetiary}`};
+    color : ${({theme}) => theme.colors.background.dark.secondary};
+    background : ${({theme}) => theme.colors.background.light.white};
+ `
+
+ export const ProgamsTitle = styled.div.attrs({
+    className : ` ProgamsTitle font-semibold `
+ })``
+
+ export const ProgramInput = styled.input.attrs({
+    className : ` ProgramInput p-[10px] w-[80%] outline-none `
+ })``
