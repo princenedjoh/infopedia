@@ -29,7 +29,7 @@ const addUser = (req : Request, res : Response,
             })
 
             if(isEmail){
-                return (res.status(500).json("email already used"))
+                return (res.status(409).json("email already used"))
             }
             const result = await userSchema.create({
                 firstName :  firstName,

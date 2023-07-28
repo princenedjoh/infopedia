@@ -1,15 +1,15 @@
-// import express from 'express'
-// import cors from 'cors'
-const express = require ("express")
-const cors = require ("cors")
-const dotenv = require("dotenv")
+// const express = require ("express")
+// const cors = require ("cors")
+// const dotenv = require("dotenv")
+import express from 'express'
+import cors from 'cors'
+import dotenv from "dotenv"
 import {
     RequestHandler, Request, Response, NextFunction
   } from "express"
 import Joi from 'joi';
 import { errorType } from "./src/middleware/erroHandler"
 import errorhandler from "./src/middleware/erroHandler"
-import requestMiddleware from "./src/middleware/requestMiddleware"
 import mongoose, { ConnectOptions } from 'mongoose'
 import { questionsRoute } from "./src/routes/questions";
 import { userRoute } from "./src/routes/users"
@@ -47,11 +47,6 @@ app.use('/branch', branchRoute)
 app.use('/courses', courseRoute)
 app.use('/programs', programRoute)
 
-
-// request middleWare
-app.use((req : Request, res: Response, next : NextFunction, 
-    handler : RequestHandler, validation : Joi.ObjectSchema)=> 
-    requestMiddleware(req, res, next, handler, validation))
 // error handler
 app.use((err : errorType, req : Request, res : Response, next : NextFunction) => errorhandler(err, req, res, next))
 

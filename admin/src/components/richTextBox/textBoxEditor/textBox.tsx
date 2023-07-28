@@ -8,6 +8,26 @@ import { MdCancel } from 'react-icons/md'
 
 const TextBox = () => {
 
+    interface programsTypes{
+        name : string
+    }
+    interface coursesTypes{
+        name : string
+    }
+    interface topicsTypes{
+        name : string
+    }
+    const [question, setQuestion] = useState("")
+    const [possibleAnswers, setPossibleAnswers] = useState([])
+    const [answer, setAnswer] = useState("")
+    const [programs, setPrograms] = useState<programsTypes[]>([
+        {
+            name : "COMPUTER SCIENCE"
+        }
+    ])
+    const [courses, setCourses] = useState<coursesTypes[]>([])
+    const [topic, setTopic] = useState<topicsTypes[]>([])
+
     const [questions, setQuestions] = useState([
         {
           question : "Who developed Python Programming language?",
@@ -105,13 +125,19 @@ const TextBox = () => {
                         Programs
                     </textBoxStyle.ProgamsTitle>
                     <textBoxStyle.ProgramContainer>
-                        <textBoxStyle.ProgramHeads>
-                            program name
-                            <MdCancel
-                                size={"16px"}
-                                opacity={0.5}
-                            />
-                        </textBoxStyle.ProgramHeads>
+                        {
+                            programs.map((programMap, index : number)=>{
+                                return(
+                                    <textBoxStyle.ProgramHeads key={index}>
+                                        {programMap.name}
+                                        <MdCancel
+                                            size={"16px"}
+                                            opacity={0.5}
+                                        />
+                                    </textBoxStyle.ProgramHeads>
+                                )
+                            })
+                        }
                         <textBoxStyle.ProgramInput
                             placeholder='search course name'
                         />
@@ -124,13 +150,19 @@ const TextBox = () => {
                         Courses
                     </textBoxStyle.ProgamsTitle>
                     <textBoxStyle.ProgramContainer>
-                        <textBoxStyle.ProgramHeads>
-                            Course Name
-                            <MdCancel
-                                size={"16px"}
-                                opacity={0.5}
-                            />
-                        </textBoxStyle.ProgramHeads>
+                        {
+                            courses.map((programMap, index : number)=>{
+                                return(
+                                    <textBoxStyle.ProgramHeads key={index}>
+                                        {programMap.name}
+                                        <MdCancel
+                                            size={"16px"}
+                                            opacity={0.5}
+                                        />
+                                    </textBoxStyle.ProgramHeads>
+                                )
+                            })
+                        }
                         <textBoxStyle.ProgramInput
                             placeholder='search course name'
                         />
