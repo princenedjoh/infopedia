@@ -1,9 +1,11 @@
 import { Routes, Route } from "react-router-dom"
+import SignUp from "../pages/signUp/signUp"
 import Home from "../pages/home/home"
 import TopBar from "../components/top bar/topBar"
 import SideBar from "../components/sidebar/sideBar"
 import About from "../pages/about/about"
 import Questions from "../pages/questions/questions"
+import Login from "../pages/login/login"
 
 const standAloneRoute = [
     {
@@ -13,6 +15,14 @@ const standAloneRoute = [
     {
         path : '/about',
         route : About
+    },
+    {
+        path : '/auth/login',
+        route : Login
+    },
+    {
+        path : '/auth/signup',
+        route : SignUp
     }
 ]
 

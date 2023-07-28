@@ -1,11 +1,7 @@
 import { Fragment, useState } from 'react'
 import * as testStyle from './test.style'
 
-const alphabets = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-
 const Test = () => {
-
-  const [showAnswer, setShowAnswer] = useState(false)
 
   const [data, setData] = useState([
     {
@@ -45,12 +41,6 @@ const Test = () => {
       showAnswer : false
     }
   ])
-
-  const showAnswerClick = (index : number) => {
-    let dataCopy = data
-    dataCopy[index].showAnswer = !dataCopy[index].showAnswer
-    setData([...dataCopy])
-  }
 
   return (
     <>

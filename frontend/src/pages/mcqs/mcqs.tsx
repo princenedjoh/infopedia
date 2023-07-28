@@ -5,8 +5,6 @@ export const alphabets = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n
 
 const Mcqs = () => {
 
-  const [showAnswer, setShowAnswer] = useState(false)
-
   const [data, setData] = useState([
     {
       question : "Who developed Python Programming language?",
@@ -106,7 +104,7 @@ const Mcqs = () => {
                                 return(
                                   <Fragment key={index}>
                                     {
-                                      dataMap.answer == answer &&
+                                      dataMap.answer === answer &&
                                       <span><mcqsStyle.AnswerText>Answer:</mcqsStyle.AnswerText> {`${alphabets[index]})`}  {answer}</span>
                                     }
                                   </Fragment>
@@ -116,12 +114,12 @@ const Mcqs = () => {
                           </mcqsStyle.Answer>
                           <mcqsStyle.Explanation>
                             {
-                              dataMap.showAnswer && dataMap.explanation.length != 0 &&
+                              dataMap.showAnswer && dataMap.explanation.length !== 0 &&
                               <mcqsStyle.ExplanationText>
                                 Explanation : 
                               </mcqsStyle.ExplanationText>
                             }
-                            {dataMap.showAnswer && dataMap.explanation.length != 0  && dataMap.explanation}
+                            {dataMap.showAnswer && dataMap.explanation.length !== 0  && dataMap.explanation}
                           </mcqsStyle.Explanation>
                         </mcqsStyle.AnswerContainer>
                       </Fragment>

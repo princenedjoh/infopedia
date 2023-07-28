@@ -42,7 +42,7 @@ export const Naivgations = styled.div.attrs({
 })``
 
 export const Navigation = styled.div.attrs({
-    className : `Navigation w-[250px] h-full flex items-center gap-5 `
+    className : `Navigation h-full flex items-center gap-5 `
 })``
 
 export const NavigationContainer = styled.div.attrs({
@@ -75,6 +75,10 @@ export const SwitcherButton = styled.div.attrs({
 
 export const Profile = styled.div.attrs({
     className : `h-full flex items-center hover:scale-[0.95] mt-[-3px] cursor-pointer`
+})``
+
+export const Menu = styled.div.attrs({
+   className : ` Menu flex gap-1 h-[20px] items-center `
 })``
 
 export const SearchIcon = styled.div.attrs({
