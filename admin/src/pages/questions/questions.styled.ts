@@ -41,9 +41,12 @@ export const WhiteSpcace = styled.div.attrs({
 })``
 
 export const QuestionContainer = styled.div.attrs({
-    className : `QeustionContainer  p-[13px] rounded-[10px] w-full flex flex-col hover:shadow`
-})`
-    background : ${({theme}) => theme.colors.background.light.primary};
+    className : `QeustionContainer  p-[13px] rounded-[10px] w-full flex flex-col 
+    duration-1000 hover:shadow`
+})<{questionUpdated : boolean}>
+`
+    background : ${({theme, questionUpdated}) => questionUpdated? theme.colors.main.primary : 
+    theme.colors.background.light.primary};
     border : ${({theme}) => `1px solid ${theme.colors.border.light.primary}`};
 `
 
@@ -74,7 +77,7 @@ export const PossibleAnswers = styled.div.attrs({
 })``
 
 export const PossibleAnswer = styled.div.attrs({
-    className : `PossibleAnswer`
+    className : `PossibleAnswer flex gap-1`
 })``
 
 export const ShowAnswer = styled.div.attrs({

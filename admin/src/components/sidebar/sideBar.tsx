@@ -1,13 +1,14 @@
 import { Outlet } from 'react-router'
 import * as sideBarStyle from './sideBar.styled'
 import { RiAdminFill, RiMapPinUserFill } from 'react-icons/ri'
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { RiBankFill } from "react-icons/ri"
 import { AiTwotoneFlag } from "react-icons/ai"
 import { FaPaintRoller } from "react-icons/fa"
 import { IoCaretForwardOutline } from 'react-icons/io5'
 import { MdAdminPanelSettings, MdSupervisorAccount } from 'react-icons/md'
+import axios from 'axios'
 
 let programHover2 = false
 
@@ -259,6 +260,14 @@ const SideBar = () => {
     })
 
     const [showTopics, setShowTopics] = useState(false)
+
+    const getPrograms = async () => {
+        const programs = await axios.get("http://localhost:3001/programs/getAllPrograms")
+        console.log(programs.data)
+    }
+    useEffect(()=>{
+        getPrograms()
+    },[])
 
     const programsHover = (program : string) => {
         programHover2 = true

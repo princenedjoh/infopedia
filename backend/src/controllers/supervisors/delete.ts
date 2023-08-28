@@ -6,16 +6,16 @@ import requestMiddleware from "../../middleware/requestMiddleware"
 const deleteSupervisor = (req : Request, res : Response, 
     next : NextFunction) => {
 
-        const { id } = req.params
+        const { userID } = req.params
 
         const validationSchema = Joi.object({
-            id : Joi.string().required()
+            userID : Joi.string().required()
         })
 
         const handler = async () => {
             const result = await supervisorSchema.deleteOne(
                 {
-                    _id : id
+                    userID : userID
                 }
             )
             result.deletedCount ?
@@ -26,4 +26,4 @@ const deleteSupervisor = (req : Request, res : Response,
         requestMiddleware(req, res, next, handler, validationSchema)
 }
 
-export default deleteSupervisor
+export {deleteSupervisor}

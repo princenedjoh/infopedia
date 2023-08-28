@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 const programSchema = new mongoose.Schema(
     {
         "programName": String,
-        "BranchID" : String,
+        "branchID" : String,
     }
 )
 

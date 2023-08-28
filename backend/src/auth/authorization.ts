@@ -1,7 +1,6 @@
 import jwt, { JwtPayload } from 'jsonwebtoken'
 import { Request, Response, NextFunction } from "express"
 
-const accessTokenSecret : string = process.env.ACCESS_TOKEN_SECRET || "altaccesstoken"
 export interface jwtUserInterface extends Request {
     jwtUser : JwtPayload | string | undefined
 }
@@ -9,8 +8,9 @@ export interface jwtUserInterface extends Request {
 //authorization
 const authorization = (req : jwtUserInterface, res : Response, 
     next : NextFunction) =>{
-    console.log('jwtUser')
+    const accessTokenSecret : string = process.env.ACCESS_TOKEN_SECRET
     const headers = req.headers
+    console.log(headers)
     const cookie = headers.cookie
     const accessToken = cookie ? cookie.split(' ')[1].split('=')[1] : 
     headers?.authorization && headers.authorization.split(' ')[1]

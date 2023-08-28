@@ -21,7 +21,7 @@ export const requestMiddleware = async (req : Request, res: Response, next : Nex
   }
 
   try {
-    handler(req, res, next)
+    await handler(req, res, next)
   } catch (err) {
     next(err);
   };

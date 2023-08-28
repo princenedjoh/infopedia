@@ -1,20 +1,43 @@
 import { Outlet } from 'react-router'
 import * as sideBarStyle from './sideBar.styled'
 import { RiMapPinUserFill } from 'react-icons/ri'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { MdScience, MdEngineering, MdBusinessCenter } from "react-icons/md"
 import { TbMathSymbols } from "react-icons/tb"
 import { RiPlantFill } from "react-icons/ri"
 import { FaPaintRoller } from "react-icons/fa"
 import { IoCaretForwardOutline } from 'react-icons/io5'
+import axios from 'axios'
+import Cookies from 'universal-cookie'
+import { Link } from 'react-router-dom'
 
 let programHover2 = false
+const cookies = new Cookies()
 
 const SideBar = () => {
+    
+    interface userDetailsType{
+        firstName? : string,
+        lastName? : string,
+        password? : string,
+        email? : string,
+        gender? : string
+    }
+    const [userDetails, setUserDeatails] = useState<userDetailsType>()
 
     interface coursesInterface {
-        course : string,
-        program : string
+        _id: string,
+        courseName : string,
+        programID : string
+    }
+    interface programsInterface {
+        _id : string,
+        programName : string,
+        branchID : string
+        branchInfo? : {
+            _id : string,
+            branchName : string
+        }
     }
 
     const [branch, setBranch] = useState([
@@ -56,148 +79,20 @@ const SideBar = () => {
         },
     ])
 
-    const [programs, setPrograms] = useState([
-        {
-            name : 'COMPUTER SCIENCE',
-            branch : 'SCIENCES'
-        },
-        {
-            name : 'ACTURIAL SCIENCE',
-            branch : 'SCIENCES'
-        },
-        {
-            name : 'OPTOMETRY',
-            branch : 'SCIENCES'
-        },
-        {
-            name : 'COMPUTER ENGINEERING',
-            branch : 'ENGINEERING'
-        },
-        {
-            name : 'COMUNICATION DESIGN',
-            branch : 'ARTS'
-        },
-        {
-            name : 'LOGISTICS',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'OPTOMETRY',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'COMPUTER ENGINEERING',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'COMUNICATION DESIGN',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'LOGISTICS',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'LOGISTICS',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'OPTOMETRY',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'COMPUTER ENGINEERING',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'COMUNICATION DESIGN',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'LOGISTICS',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'LOGISTICS',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'OPTOMETRY',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'COMPUTER ENGINEERING',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'COMUNICATION DESIGN',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'LOGISTICS',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'LOGISTICS',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'LOGISTICS',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'OPTOMETRY',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'COMPUTER ENGINEERING',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'COMUNICATION DESIGN',
-            branch : 'BUSINESS'
-        },
-        {
-            name : 'LOGISTICS',
-            branch : 'BUSINESS'
-        },
-    ])
+    const [programs, setPrograms] = useState<programsInterface[]>()
 
-    for(const i in branch){
-        branch[i].count = 0
-        for(const j in programs){
-            if(programs[j].branch == branch[i].name){
-                branch[i].count++
+    if(programs){
+        for(const i in branch){
+            branch[i].count = 0
+            for(const j in programs){
+                if(programs[j].branchInfo?.branchName == branch[i].name){
+                    branch[i].count++
+                }
             }
         }
     }
 
-    const [courses, setCourses] = useState([
-        {
-            course : "OPERATIONS RESEARCH",
-            program : "COMPUTER SCIENCE"
-        },
-        {
-            course : "OPERATIONS RESEARCH",
-            program : "COMPUTER SCIENCE"
-        },
-        {
-            course : "OPERATIONS RESEARCH",
-            program : "COMPUTER SCIENCE"
-        },
-        {
-            course : "OPERATIONS RESEARCH",
-            program : "COMPUTER SCIENCE"
-        },
-        {
-            course : "OPERATIONS RESEARCH",
-            program : "COMPUTER SCIENCE"
-        },
-        {
-            course : "OPERATIONS RESEARCH",
-            program : "COMPUTER SCIENCE"
-        },
-    ])
+    const [courses, setCourses] = useState<coursesInterface[]>()
 
     const [topics, setTopics] = useState([
         {
@@ -249,18 +144,100 @@ const SideBar = () => {
 
     const [showTopics, setShowTopics] = useState(false)
 
-    const programsHover = (program : string) => {
-        programHover2 = true
-        let courses2 = []
-        for (let i in courses){
-            if (courses[i].program === program){
-                courses2.push(courses[i])
+    const getPrograms = async () => {
+        try {
+            const programs = await axios.get("http://localhost:3001/programs/getAllPrograms")
+            setPrograms(programs.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(()=>{
+        getPrograms()
+    },[])
+
+    const getCourses = async () => {
+        try {
+            const course = await axios.get("http://localhost:3001/courses/getAllCourses")
+            setCourses(course.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(()=>{
+        getCourses()
+    },[])
+
+    const getSpecificCourses = async () => {
+        const course = await axios.get("http://localhost:3001/courses/getAllCourses")
+        setCourses(course.data)
+        console.log(course.data)
+    }
+
+    const courseClick = () => {
+        let showCourses2 = showCourses
+        showCourses2.show = false
+        setShowCourses({...showCourses2})
+    }
+
+    useEffect(()=>{
+        const ifProgram = async () => {
+            if(programs){
+                let programsCopy = programs
+                const getBranch = async (branchID : string) => {
+                    const branch =  await axios.get("http://localhost:3001/branch/getBranch",
+                    {
+                        params : {
+                            id : branchID
+                        }
+                    })
+                    return (branch.data)
+                }
+                for(let program of programsCopy){
+                    if(program.branchID){
+                        const branchInfo = await  getBranch(program.branchID)
+                        program.branchInfo = branchInfo
+                    }
+                }
             }
         }
-        setCoursesToMap([...courses2])
-        let showCourses2 = showCourses
-        showCourses2.show = true
-        setShowCourses({...showCourses2})
+        ifProgram()
+    },[programs])
+
+    const getUserInfo = async () => {
+        try {
+            const browserCookie = cookies.get("jwtToken")
+            if(browserCookie){
+                console.log(browserCookie)
+                const userInfo = await axios.get("http://localhost:3001/users/get", {
+                    headers : {
+                        Authorization : `Bearer ${browserCookie}`
+                    }
+                })
+                setUserDeatails(userInfo.data[0])
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(()=>{
+        getUserInfo()
+    },[])
+
+    const programsHover = (program : programsInterface) => {
+        programHover2 = true
+        if(courses){
+            let courses2 = []
+            for (let i in courses){
+                if ((courses[i].programID) === program._id){
+                    courses2.push(courses[i])
+                }
+            }
+            setCoursesToMap([...courses2])
+            let showCourses2 = showCourses
+            showCourses2.show = true
+            setShowCourses({...showCourses2})
+        }
     }
 
     const branchClick = (name : string)=>{
@@ -277,18 +254,36 @@ const SideBar = () => {
     <sideBarStyle.MainContainer>
       <sideBarStyle.Main>
         <sideBarStyle.Profile>
-            <sideBarStyle.ProfleImg>
-                <RiMapPinUserFill 
-                    size={'22px'}
-                />
-            </sideBarStyle.ProfleImg>
-            <sideBarStyle.ProfileInfo>
-                <sideBarStyle.name>
-                    Prince Nedjoh
-                </sideBarStyle.name>
-                <sideBarStyle.email>
-                    princenedjoh5@gmail.com
-                </sideBarStyle.email>
+            {
+                userDetails &&
+                <sideBarStyle.ProfleImg>
+                    <RiMapPinUserFill 
+                        size={'22px'}
+                    />
+                </sideBarStyle.ProfleImg>
+            }
+            <sideBarStyle.ProfileInfo
+                loggedIn={userDetails? true : false}
+            >
+                {
+                    userDetails?
+                    <>
+                        <sideBarStyle.name>
+                            {(`${userDetails.firstName} `).toUpperCase()} {(`${userDetails.lastName}`).toUpperCase()}
+                        </sideBarStyle.name>
+                        <sideBarStyle.email>
+                        {`${userDetails.email}`}
+                        </sideBarStyle.email>
+                    </> :
+
+                    <>
+                        <Link to={"/auth/login"}>
+                            <sideBarStyle.Login>
+                                LOGIN
+                            </sideBarStyle.Login>
+                        </Link>
+                    </>
+                }
             </sideBarStyle.ProfileInfo>
         </sideBarStyle.Profile>
         <sideBarStyle.Branches>
@@ -322,13 +317,15 @@ const SideBar = () => {
                             </sideBarStyle.BranchInfo>
                             <sideBarStyle.Programs>
                                 {
+                                    programs &&
                                     programs.map((programMap, index : number) => {
                                         return(
                                             <Fragment key={index}>
                                                 {
-                                                    programMap.branch == branchMap.name &&
+                                                    (programMap.branchInfo?.branchName)?.toUpperCase() === 
+                                                    (branchMap.name).toUpperCase() &&
                                                     <sideBarStyle.Program
-                                                        onMouseEnter={()=>programsHover(programMap.name)}
+                                                        onMouseEnter={()=>programsHover(programMap)}
                                                         onMouseLeave={()=>{
                                                             programHover2 = false
                                                             setTimeout(() => {
@@ -340,7 +337,7 @@ const SideBar = () => {
                                                             }, 500);
                                                         }}
                                                     >
-                                                        { programMap.name}
+                                                        { (programMap.programName).toUpperCase() }
                                                     </sideBarStyle.Program>             
                                                 }
                                             </Fragment>
@@ -376,9 +373,16 @@ const SideBar = () => {
                 {
                     coursesToMap.map((course, index : number)=>{
                         return(
-                            <sideBarStyle.Course key={index}>
-                                {course.course}
-                            </sideBarStyle.Course>
+                            <Fragment key={index}>
+                                <Link to={`${course._id}`}>
+                                    <sideBarStyle.Course 
+                                        key={index}
+                                        onClick={()=>courseClick()}
+                                    >
+                                        {course.courseName.toUpperCase()}
+                                    </sideBarStyle.Course>
+                                </Link>
+                            </Fragment>
                         )
                     })
                 }

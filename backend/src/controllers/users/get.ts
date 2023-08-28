@@ -1,21 +1,23 @@
-import { Request, Response, NextFunction } from "express"
+import { Response, NextFunction } from "express"
 import Joi from "joi"
 import userSchema from '../../models/usersModel'
 import requestMiddleware from "../../middleware/requestMiddleware"
+import { jwtUserInterface } from "../../../src/auth/authorization"
 
-const getUser = (req : Request, res : Response, 
+const getUser = (req : jwtUserInterface, res : Response, 
     next : NextFunction) => {
-
-        const { id } = req.body
+        let userID : unknown;
+        if(typeof(req.jwtUser) === "object"){
+            userID = req.jwtUser.userID
+        }
 
         const validationSchema = Joi.object({
-            id : Joi.string().required()
         })
 
         const handler = async () => {
             const result = await userSchema.find(
                 {
-                    _id : id
+                    _id : userID
                 }
             )
             result ?
@@ -26,7 +28,7 @@ const getUser = (req : Request, res : Response,
         requestMiddleware(req, res, next, handler, validationSchema)
 }
 
-const getAllUsers = (req : Request, res : Response, 
+const getAllUsers = (req : jwtUserInterface, res : Response, 
     next : NextFunction) => {
 
         const validationSchema = Joi.object({

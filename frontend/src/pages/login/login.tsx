@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { LogoText } from '../../components/top bar/topBar'
 import * as loginStyle from './login.styled'
-import { Fragment, useState } from 'react'
+import { Fragment, useContext, useState } from 'react'
 import { RiLockPasswordFill } from 'react-icons/ri'
 import svgs from '../../assets'
 import { IoEnter } from 'react-icons/io5'
@@ -41,7 +41,12 @@ const Login = () => {
                     }
                 )
                 const {accessToken} = response.data
-                cookies.set('jwtToken', accessToken);
+                console.log(accessToken)
+                cookies.remove('jwtToken')
+                cookies.set('jwtToken', accessToken, {
+                    domain : "localhost", path : "/"
+                });
+                console.log(cookies.get('jwtToken'))
                 navigate("/questions")
             }
             else if(response.status === 404){
@@ -100,7 +105,6 @@ const Login = () => {
 
     return(
         <loginStyle.Main>
-            <ToastContainer/>
             <loginStyle.Head>
                 <loginStyle.Avatar
                     src={svgs.logoImg}

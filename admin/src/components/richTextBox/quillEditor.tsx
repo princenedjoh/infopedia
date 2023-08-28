@@ -3,7 +3,7 @@ import './quillEditor.css'
 import 'react-quill/dist/quill.bubble.css';
 import * as QuillEditorStyle from './quillEditor.style'
 import React, { useState, useEffect } from 'react';
-import { Markup } from 'interweave';
+import { Interweave } from 'interweave';
 
 interface textBoxInputParams {
     values : string[],
@@ -49,6 +49,7 @@ const QuillEditorTextbox = ({
                     onChange={(e)=>valueChange(e)} 
                     modules={modules}
                     formats={formats}
+                    placeholder='Input an Answer'
                 />
             </QuillEditorStyle.Main>
         </>

@@ -30,6 +30,10 @@ const questionsRoute = [
     {
         path : '/questions',
         route : Questions
+    },
+    {
+        path : '/questions/:courseID',
+        route : Questions
     }
 ]
 
@@ -42,6 +46,7 @@ const Router = () => {
                             questionsRoute.map((path, index : number)=>{
                                 return(
                                     <Route key={index} path={path.path} element={<path.route />} />
+                                    
                                 )
                             })
                         }

@@ -18,4 +18,33 @@ const getAllQuestions = (req : Request, res : Response,
         requestMiddleware(req, res, next, handler, validationSchema)
 }
 
-export default getAllQuestions
+const getQuestion = (req : Request, res : Response, 
+    next : NextFunction) => {
+
+        const { id, coursesID } = req.query
+
+        const validationSchema = Joi.object({
+            id : Joi.string(),
+            coursesID : Joi.array().items(Joi.string())
+        })
+
+        const handler = async () => {
+            const result = await questionsModel.find(
+                {
+                    $or : [
+                        {_id : id},
+                        {
+                            coursesID : {
+                                $in : [coursesID]
+                            }
+                        }
+                    ]
+                }
+            )
+            res.status(200).json(result)
+        }
+
+        requestMiddleware(req, res, next, handler, validationSchema)
+}
+
+export {getAllQuestions, getQuestion}

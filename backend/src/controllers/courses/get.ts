@@ -6,21 +6,41 @@ import requestMiddleware from "../../middleware/requestMiddleware"
 const getcourse = (req : Request, res : Response, 
     next : NextFunction) => {
 
-        const { id } = req.body
+        const { id, courseName } = req.query
 
         const validationSchema = Joi.object({
-            id : Joi.string().required()
+            id : Joi.string(),
+            courseName : Joi.string()
         })
 
         const handler = async () => {
-            const result = await courseSchema.findOne(
-                {
-                    userID : id
-                }
-            )
-            result ?
-            res.status(200).json(result) :
-            res.status(404).json("course not found")
+            if(id){
+                const result = await courseSchema.find(
+                    {
+                        $or : [
+                            {_id : id}
+                        ]
+                    }
+                )
+                result ?
+                res.status(200).json(result) :
+                res.status(404).json("course not found")
+            }
+            else{
+                const result = await courseSchema.find(
+                    {
+                        $or : [
+                            {courseName : {
+                                $regex : courseName || "!@%^~(&%@!~%!&&!GF567898iwe8823*(^$^&)#{|}{}?><>!@1356bnvnn   F",
+                                $options : 'i'
+                            }}
+                        ]
+                    }
+                )
+                result ?
+                res.status(200).json(result) :
+                res.status(404).json("course not found")
+            }
         }
 
         requestMiddleware(req, res, next, handler, validationSchema)

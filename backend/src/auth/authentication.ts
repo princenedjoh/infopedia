@@ -34,7 +34,7 @@ const requestHandler = async (req : Request, res : Response) =>{
     })
     if(user){
         jwtUser.userID = user._id
-        const accessToken = jwt.sign(jwtUser, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'})
+        const accessToken = jwt.sign(jwtUser, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '24h'})
         res.status(200).json({accessToken: accessToken})
     }
     else{

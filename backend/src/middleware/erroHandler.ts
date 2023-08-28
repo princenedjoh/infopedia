@@ -14,7 +14,8 @@ const errorhandler = (err : errorType, req : Request, res : Response,
     }
     else{
         res.status(err.status || 500).json({
-          'error': err
+          url : "error handler",
+          error: err
         })
     }
   

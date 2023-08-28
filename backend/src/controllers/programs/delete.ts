@@ -46,7 +46,6 @@ const deleteProgram = (req : jwtUserInterface, res : Response,
                 }
             }
             else{
-                console.log(req.jwtUser)
                 res.status(500).json(
                     {
                         url : "src/controllers/programs/delete",

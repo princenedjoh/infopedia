@@ -12,7 +12,7 @@ export const MainContainer = styled.div.attrs({
 })``
 
 export const Profile = styled.div.attrs({
-    className : `Profile cursor-pointer mb-[5px] gap-1 pl-[50px] h-[80px] flex items-center`
+    className : `Profile cursor-pointer mb-[5px] gap-1 pl-[50px] h-[80px] flex items-center w-full`
 })`
     background : ${({theme}) => theme.colors.background.light.primary};
 `
@@ -22,8 +22,21 @@ export const ProfleImg = styled.div.attrs({
 })``
 
 export const ProfileInfo = styled.div.attrs({
-    className : ``
-})``
+    className : `ProfileInfo w-full pr-[50px] flex justify-center`
+})<{loggedIn : boolean}>
+`
+    flex-direction : ${({loggedIn}) => loggedIn ? "column" : "row"};
+`
+
+export const Login = styled.div.attrs({
+    className : `Login rounded-full w-[100px] flex items-center pb-[7px] pt-[6px] 
+    font-semibold justify-center cursor-pointer duration-300 hover:opacity-[0.9]
+    hover:scale-[0.95]`
+})`
+    color : ${({theme}) => theme.colors.background.light.white};
+    border : ${({theme}) => `1px solid ${theme.colors.main.primary}`};
+    background : ${({theme}) => theme.colors.main.primary};
+`
 
 
 export const name = styled.div.attrs({
@@ -113,4 +126,3 @@ export const Course = styled.div.attrs({
         background : ${({theme}) => theme.colors.background.light.primary};
     }
 `
-

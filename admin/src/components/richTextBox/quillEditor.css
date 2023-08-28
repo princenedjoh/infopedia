@@ -13,3 +13,8 @@
 .ql-bubble .ql-tooltip-arrow{
     left: 8% !important;
 }
+
+.ql-bubble .ql-editor a{
+    color: blue;
+    text-decoration: underline;
+}

@@ -2,7 +2,7 @@ import * as topBarStyle from './topBar.styled'
 import svgs from '../../assets/index'
 import { IoSearch } from 'react-icons/io5'
 import { RiMapPinUserFill } from 'react-icons/ri'
-import { useState, useEffect, Fragment } from 'react'
+import { useState, useEffect, Fragment, useContext } from 'react'
 import { Outlet } from 'react-router'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import type { MenuProps } from 'antd';
@@ -13,6 +13,8 @@ import { FaPowerOff } from 'react-icons/fa'
 import Cookies from "universal-cookie"
 import { BASE_URL } from '../../variables/variables'
 import axios from "axios"
+import Context from '../../context/context'
+import { ToastContainer } from 'react-toastify'
 
 const cookie = new Cookies()
 
@@ -27,28 +29,51 @@ export const LogoText = () => {
 }
 
 const TopBar = () => {
+
     const navigate = useNavigate()
     const handleLogout = () => {
         cookie.remove("jwtToken")
         navigate("/auth/login")
 
     }
-    const location = useLocation().pathname
+    const location = useLocation().pathname.toString()
+    useEffect(()=>{
+        navigationClick()
+    },[location])
+    const questionRegex = /^\/questions/;
+    const homeRegex = /^\/home/;
+    const aboutRegex = /^\/about/;
+    const isQuestionRoute = () => {
+        if(location.match(questionRegex) !== null)
+            return true
+            return false
+    }
+    const isHomeRoute = () => {
+        if(location.match(homeRegex) !== null)
+            return true
+            return false
+    }
+    const isAboutRoute = () => {
+        if(location.match(aboutRegex) !== null)
+            return true
+            return false
+    }
+    const questionRoute = isQuestionRoute()
     const [navigations, setNavigation] = useState([
         {
             name : 'Home',
             route : '/',
-            active : location == '/' ? true : false
+            active : false
         },
         {
             name : 'Questions',
             route : '/questions',
-            active : location == '/questions' ? true : false
+            active : false
         },
         {
             name : 'About',
             route : '/about',
-            active : location == '/about' ? true : false
+            active : false
         }
     ])
 
@@ -109,22 +134,38 @@ const TopBar = () => {
         const isUserLoggedIn = isLoggedIn()
     }
 
-    useEffect(()=>{
+    const navigationClick = () => {
         const navigationsCopy = navigations
-        for(const i in navigationsCopy){
-            if(navigationsCopy[i].route === location){
-                navigationsCopy[i].active = true
+        for(const i of navigationsCopy){
+            if(i.name === "About"){
+                if(isAboutRoute()){
+                    i.active = true
+                }else{
+                    i.active = false
+                }
             }
-            else{
-                navigationsCopy[i].active = false
+            if(i.name === "Home"){
+                if(isHomeRoute()){
+                    i.active = true
+                }else{
+                    i.active = false
+                }
+            }
+            if(i.name === "Questions"){
+                if(isQuestionRoute()){
+                    i.active = true
+                }else{
+                    i.active = false
+                }
             }
         }
         setNavigation([...navigationsCopy])
-    },[location])
+    }
 
   return (
     <>
         <Outlet/>
+        <ToastContainer/>
       <topBarStyle.Main>
         <topBarStyle.Logo>
             <topBarStyle.LogoImg src = {svgs.logoImg}/>

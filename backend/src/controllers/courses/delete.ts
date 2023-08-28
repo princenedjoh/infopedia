@@ -6,7 +6,7 @@ import requestMiddleware from "../../middleware/requestMiddleware"
 const deletecourse = (req : Request, res : Response, 
     next : NextFunction) => {
 
-        const { id } = req.params
+        const { id } = req.body
 
         const validationSchema = Joi.object({
             id : Joi.string().required()
@@ -26,4 +26,4 @@ const deletecourse = (req : Request, res : Response,
         requestMiddleware(req, res, next, handler, validationSchema)
 }
 
-export default deletecourse
+export {deletecourse}

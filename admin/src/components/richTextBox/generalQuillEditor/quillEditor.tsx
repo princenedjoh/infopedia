@@ -1,11 +1,12 @@
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
 import * as GeneralQuillEditorStyle from './quillEditor.style'
+import './genralQuillEditor.css'
 import React, { useState, useEffect } from 'react';
 import { Markup } from 'interweave';
 
 
-const GeneralQuillEditorTextbox = ({}) => {
+const GeneralQuillEditorTextbox = ({setValue}:any) => {
 
     const modules = {
         toolbar: [
@@ -23,6 +24,10 @@ const GeneralQuillEditorTextbox = ({}) => {
 
     const [quillValue, setQuillValue] = useState("")
 
+    useEffect(()=>{
+        setValue(quillValue)
+    },[quillValue])
+
     return (
         <>
             <GeneralQuillEditorStyle.Main>
@@ -31,6 +36,7 @@ const GeneralQuillEditorTextbox = ({}) => {
                     onChange={setQuillValue} 
                     modules={modules}
                     formats={formats}
+                    placeholder='Input Question'
                 />
             </GeneralQuillEditorStyle.Main>
         </>

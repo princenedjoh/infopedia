@@ -49,4 +49,4 @@ const addSupervisor = (req : Request, res : Response,
         requestMiddleware(req, res, next, handler, validationSchema)
 }
 
-export default addSupervisor
+export {addSupervisor}

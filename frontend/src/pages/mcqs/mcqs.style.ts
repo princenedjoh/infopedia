@@ -42,7 +42,7 @@ export const PossibleAnswers = styled.div.attrs({
 })``
 
 export const PossibleAnswer = styled.div.attrs({
-    className : `PossibleAnswer`
+    className : `PossibleAnswer flex flex gap-2`
 })``
 
 export const ShowAnswer = styled.div.attrs({

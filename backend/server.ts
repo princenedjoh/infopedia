@@ -18,6 +18,8 @@ import { adminRoute } from "./src/routes/admin"
 import { branchRoute } from "./src/routes/branch"
 import { courseRoute } from "./src/routes/courses"
 import { programRoute } from "./src/routes/programs"
+import { supervisorRoute } from "./src/routes/supervisors"
+import { topicRoute } from "./src/routes/topics"
 
 const result = dotenv.config()
 const dbconnection = () =>  mongoose.connect("mongodb://127.0.0.1:27017/infopediaDB",
@@ -31,10 +33,7 @@ try {
 
 export const app = express()
 
-app.use(cors({
-    origin: 'http://localhost:3000',
-    credentials : true
-}))
+app.use(cors())
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
@@ -46,6 +45,8 @@ app.use('/admin', adminRoute)
 app.use('/branch', branchRoute)
 app.use('/courses', courseRoute)
 app.use('/programs', programRoute)
+app.use('/supervisor', supervisorRoute)
+app.use('/topics', topicRoute)
 
 // error handler
 app.use((err : errorType, req : Request, res : Response, next : NextFunction) => errorhandler(err, req, res, next))

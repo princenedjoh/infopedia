@@ -6,16 +6,23 @@ import requestMiddleware from "../../middleware/requestMiddleware"
 const getProgram = (req : Request, res : Response, 
     next : NextFunction) => {
 
-        const { id } = req.body
+        const { id, programName } = req.query
 
         const validationSchema = Joi.object({
-            id : Joi.string().required()
+            id : Joi.string(),
+            programName : Joi.string()
         })
 
         const handler = async () => {
-            const result = await programSchema.findOne(
+            const result = await programSchema.find(
                 {
-                    _id : id
+                    $or : [
+                        {_id : id},
+                        {programName : {
+                            $regex : programName,
+                            $options : 'i'
+                        }}
+                    ]
                 }
             )
             result ?

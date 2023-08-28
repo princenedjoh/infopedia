@@ -41,9 +41,10 @@ const addProgram = (req : jwtUserInterface, res : Response,
         
                     if(!isProgram){
                         const result = await programSchema.create({
-                            programName : programName
+                            programName : programName,
+                            branchID : branchID
                         })
-                        res.status(200).json("program added succesfully")
+                        res.status(200).json(result)
                     }
                     else{
                         res.status(404).json({
@@ -51,6 +52,12 @@ const addProgram = (req : jwtUserInterface, res : Response,
                             message : "program already exists"
                         })
                     }
+                }
+                else{
+                    res.status(404).json({
+                        url : "src/controllers/programs/add",
+                        message : "user does not have elevated privilages"
+                    })
                 }
             }
             else{

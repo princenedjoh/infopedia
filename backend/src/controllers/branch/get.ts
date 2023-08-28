@@ -6,10 +6,10 @@ import requestMiddleware from "../../middleware/requestMiddleware"
 const getBranch = (req : Request, res : Response, 
     next : NextFunction) => {
 
-        const { id } = req.body
+        const { id } = req.query
 
         const validationSchema = Joi.object({
-            id : Joi.string().required()
+            id : Joi.string()
         })
 
         const handler = async () => {

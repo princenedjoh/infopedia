@@ -6,16 +6,16 @@ import requestMiddleware from "../../middleware/requestMiddleware"
 const getSupervisor = (req : Request, res : Response, 
     next : NextFunction) => {
 
-        const { id } = req.body
+        const { userID } = req.body
 
         const validationSchema = Joi.object({
-            id : Joi.string().required()
+            userID : Joi.string().required()
         })
 
         const handler = async () => {
             const result = await supervisorSchema.findOne(
                 {
-                    userID : id
+                    userID : userID
                 }
             )
             result ?
@@ -26,4 +26,21 @@ const getSupervisor = (req : Request, res : Response,
         requestMiddleware(req, res, next, handler, validationSchema)
 }
 
-export default getSupervisor
+const getAllSupervisors = (req : Request, res : Response, 
+    next : NextFunction) => {
+
+        const validationSchema = Joi.object({
+            
+        })
+
+        const handler = async () => {
+            const result = await supervisorSchema.find()
+            result ?
+            res.status(200).json(result) :
+            res.status(404).json("users not found")
+        }
+
+        requestMiddleware(req, res, next, handler, validationSchema)
+}
+
+export {getSupervisor, getAllSupervisors}
