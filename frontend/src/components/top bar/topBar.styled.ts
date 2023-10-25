@@ -1,15 +1,12 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.div.attrs({
-    className : `w-full`
-})`
-`
-
 export const Main = styled.div.attrs({
-    className : `Main text-xs w-full h-[50px] fixed shadow-[0px_4px_7px_#D3D3EA] px-[50px] flex items-center z-100`
+    className : `Main text-xs w-full h-[50px] fixed 
+    backdrop-filter backdrop-blur-sm
+    shadow-[0px_4px_7px_#D3D3EA] px-[50px] flex items-center z-10`
 })`
     color : ${({theme}) => theme.colors.text.dark.primary};
-    background : ${({theme}) => theme.colors.background.light.white};
+    background : ${({theme}) => `${theme.colors.background.light.white}b3`};
 `
 
 export const Outlet = styled.div.attrs({
@@ -19,6 +16,12 @@ export const Outlet = styled.div.attrs({
 export const Logo = styled.div.attrs({
     className : `Logo flex gap-1 mr-[200px] cursor-pointer`
 })``
+
+export const LogoText = styled.div.attrs({
+    className : `LogoText font-bold text-sm`
+})`
+    color : ${({theme}) => theme.colors.main.primary};
+`
 
 export const LogoImg = styled.img.attrs({
     className : `LogoImg`
@@ -39,7 +42,7 @@ export const Naivgations = styled.div.attrs({
 })``
 
 export const Navigation = styled.div.attrs({
-    className : `Navigation w-[250px] h-full flex items-center gap-5 `
+    className : `Navigation h-full flex items-center gap-5 `
 })``
 
 export const NavigationContainer = styled.div.attrs({
@@ -72,6 +75,10 @@ export const SwitcherButton = styled.div.attrs({
 
 export const Profile = styled.div.attrs({
     className : `h-full flex items-center hover:scale-[0.95] mt-[-3px] cursor-pointer`
+})``
+
+export const Menu = styled.div.attrs({
+   className : ` Menu flex gap-1 h-[20px] items-center `
 })``
 
 export const SearchIcon = styled.div.attrs({

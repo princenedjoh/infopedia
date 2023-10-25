@@ -1,5 +1,8 @@
 import * as questionsStyled from './questions.styled'
 import Mcqs from '../mcqs/mcqs'
+import Test from '../test/test'
+import Timer from '../../components/timer/timer'
+import QuestionNumbers from '../../components/question numbers/questionNumbers'
 import { useState } from 'react'
 
 const Questions = () => {
@@ -42,10 +45,22 @@ const Questions = () => {
             </questionsStyled.Head>
             <questionsStyled.Body>
                 <questionsStyled.Left>
-                    <Mcqs />
+                    {
+                        mcqs ?
+                        <Mcqs /> :
+                        <Test/>
+                    }
                 </questionsStyled.Left>
                 <questionsStyled.Right>
-                    ADS
+                    {
+                        !mcqs && <Timer/>
+                    }
+                    {
+                        !mcqs && <QuestionNumbers/>
+                    }
+                    <questionsStyled.Ads>
+                        ADS
+                    </questionsStyled.Ads>
                 </questionsStyled.Right>
             </questionsStyled.Body>
         </questionsStyled.Main>

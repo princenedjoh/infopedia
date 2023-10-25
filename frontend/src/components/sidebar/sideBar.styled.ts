@@ -12,7 +12,7 @@ export const MainContainer = styled.div.attrs({
 })``
 
 export const Profile = styled.div.attrs({
-    className : `Profile cursor-pointer mb-[5px] gap-1 pl-[50px] h-[80px] flex items-center`
+    className : `Profile cursor-pointer mb-[5px] gap-1 pl-[50px] h-[80px] flex items-center w-full`
 })`
     background : ${({theme}) => theme.colors.background.light.primary};
 `
@@ -22,8 +22,21 @@ export const ProfleImg = styled.div.attrs({
 })``
 
 export const ProfileInfo = styled.div.attrs({
-    className : ``
-})``
+    className : `ProfileInfo w-full pr-[50px] flex justify-center`
+})<{loggedIn : boolean}>
+`
+    flex-direction : ${({loggedIn}) => loggedIn ? "column" : "row"};
+`
+
+export const Login = styled.div.attrs({
+    className : `Login rounded-full w-[100px] flex items-center pb-[7px] pt-[6px] 
+    font-semibold justify-center cursor-pointer duration-300 hover:opacity-[0.9]
+    hover:scale-[0.95]`
+})`
+    color : ${({theme}) => theme.colors.background.light.white};
+    border : ${({theme}) => `1px solid ${theme.colors.main.primary}`};
+    background : ${({theme}) => theme.colors.main.primary};
+`
 
 
 export const name = styled.div.attrs({
@@ -39,7 +52,7 @@ export const Branches = styled.div.attrs({
 })``
 
 export const BranchInfo = styled.div.attrs({
-    className : `BranchInfo pl-[50px] py-[13px] flex items-center`
+    className : `BranchInfo pl-[50px] py-[13px] flex items-center justify-between`
 })<{active? : boolean}>
 `
     background : ${({theme, active}) => active && theme.colors.background.light.primary};
@@ -54,8 +67,19 @@ export const Branch = styled.div.attrs({
 `
 
 export const BranchIcon = styled.div.attrs({
-    className : `BranchIcon w-[17px] h-[17px] mr-[5px] rounded-full bg-gray-300`
+    className : `BranchIcon w-[17px] h-[17px] mr-[5px] flex justify-center items-center rounded-full`
 })``
+
+export const BranchLeft = styled.div.attrs({
+    className : `BranchLeft flex `
+})``
+
+export const BranchButton = styled.div.attrs({
+    className : `BranchButton mr-[20px] duration-300`
+})<{active : boolean}>
+`
+    transform : ${({active}) => active ? "rotate(90deg)" : "rotate(0)"};
+`
 
 export const BranchName = styled.div.attrs({
     className : `BranchName font-bold `
@@ -76,7 +100,7 @@ export const Program = styled.div.attrs({
 
 export const CoursesContainer = styled.div.attrs({
     className : `CoursesContainer fixed left-[330px] rounded-[10px] 
-    backdrop-filter backdrop-blur-xl font-semibold
+    backdrop-filter backdrop-blur-lg font-semibold
     top-[68px] w-[300px] min-h-[85%] shadow-lg text-xs`
 })`
     border : ${({theme}) => `1px solid ${theme.colors.border.light.primary}`};
@@ -102,4 +126,3 @@ export const Course = styled.div.attrs({
         background : ${({theme}) => theme.colors.background.light.primary};
     }
 `
-

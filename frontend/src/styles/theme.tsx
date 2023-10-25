@@ -42,6 +42,10 @@ const theme = {
                 primary : "#242424",
                 secondary : "#696969"
             }
+        },
+        buttons : {
+            red : '#EA5252',
+            green : '#4BB03B'
         }
     }
 }
