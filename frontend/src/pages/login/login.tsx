@@ -13,6 +13,9 @@ import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import "../../components/reactToastify/toastifyCustomStyles.css"
 import { BASE_URL } from '../../variables/variables'
+import Input from '../../components/UI/input/input'
+import { IconType } from 'react-icons'
+import { inputValuesType } from '../../utils/types'
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -69,7 +72,7 @@ const Login = () => {
         }
     }
 
-    const inputValues = [
+    const inputValues : inputValuesType[] = [
         {
             title : "Email",
             type : "email",
@@ -120,27 +123,14 @@ const Login = () => {
                     inputValues.map((inputValuesMap, index:number)=>{
                         return(
                             <Fragment key={index}>
-                                <loginStyle.InputContainer>
-                                    <loginStyle.InputFlex>
-                                        <loginStyle.InputFlexLeft>
-                                            <inputValuesMap.icon
-                                                size={"16px"}
-                                                opacity={0.8}
-                                            />
-                                            <loginStyle.InputValue
-                                                value={inputValuesMap.value}
-                                                onChange={
-                                                    (e)=>inputValuesMap.setValue(
-                                                        e.target.value
-                                                    )
-                                                }
-                                                required
-                                                placeholder={inputValuesMap.placeholder}
-                                                type={inputValuesMap.type}
-                                            />
-                                        </loginStyle.InputFlexLeft>
-                                    </loginStyle.InputFlex>
-                                </loginStyle.InputContainer>
+                                <Input 
+                                    value={inputValuesMap.value}
+                                    setValue={inputValuesMap.setValue}
+                                    type={inputValuesMap.type}
+                                    background={theme.colors2.gray.gray7}
+                                    border='none'
+                                    PreIcon={inputValuesMap.icon}
+                                />
                             </Fragment>
                         )
                     })
