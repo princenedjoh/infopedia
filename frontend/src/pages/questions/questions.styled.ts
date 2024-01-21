@@ -56,7 +56,7 @@ export const Body = styled.div.attrs({
 })``
 
 export const Left = styled.div.attrs({
-    className : `Left w-full rounded-[10px]`
+    className : `Left w-full rounded-[10px] flex flex-col gap-[20px]`
 })`
 `
 
@@ -77,3 +77,13 @@ export const nameHere = styled.div.attrs({
     className : ``
 })`
 `
+
+export const Difficulty = styled.div.attrs({
+    className : ` Difficulty w-full rounded-[5px] w-[150px] 
+    h-[45px] p-[10px] flex flex-col justify-center cursor-pointer`
+ })`
+     background : ${({theme}) => `${theme.colors2.gray.gray7}`};
+     &:hover{
+        opacity : 0.6;
+     }
+ `

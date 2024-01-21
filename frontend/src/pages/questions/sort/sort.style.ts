@@ -8,7 +8,10 @@ export const Main = styled.div.attrs({
 `
 
 export const Difficulty = styled.div.attrs({
-   className : ` Difficulty w-full rounded-[5px] h-[45px] p-[10px] flex flex-col justify-center`
+   className : ` Difficulty w-full rounded-[5px] h-[45px] p-[10px] flex flex-col cursor-pointer justify-center`
 })`
     background : ${({theme}) => `${theme.colors2.gray.gray6}80`};
+    &:hover{
+        opacity : 0.6;
+     }
 `
