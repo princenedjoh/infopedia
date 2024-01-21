@@ -1,4 +1,4 @@
 .css-ur3p4s-MuiButtonBase-root-MuiChip-root {
-    height: none;
-    padding: 5px 0;
+    height: none !important;
+    padding: 5px 0 !important;
 }
