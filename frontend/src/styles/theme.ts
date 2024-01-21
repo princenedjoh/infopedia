@@ -1,3 +1,5 @@
+import { TypographyBold, TypographySize } from "./style.types"
+
 const theme = {
     colors : {
         main : {
@@ -114,7 +116,35 @@ const theme = {
             white : "#ffffff",
             black : "#000000"
         }
-    }
+    },
+
+    typography: {
+        size: { xs: TypographySize.xs, sm: TypographySize.sm, sm2: TypographySize.sm2, md: TypographySize.md, 
+            md2 : TypographySize.md2, lg: TypographySize.lg, lg2 : TypographySize.lg,
+            xl: TypographySize.xl, xxl: TypographySize.xxl, xl3: TypographySize.xl3 },
+        bold: { sm: TypographyBold.sm, md: TypographyBold.md, lg: TypographyBold.lg },
+      },
+
+    spacing: {
+        xs: "6px",
+        sm: "12px",
+        md: "18px",
+        lg: "30px",
+    },
+
+    borderRadius: {
+        sm: "8px",
+        md: "12px",
+        lg: "25px",
+    },
+
+    breakpoints: {
+        xs: "600px",
+        sm: "800px",
+        md: "1000px",
+        lg: "1200px",
+        xl: "1400px",
+    },
 }
 
 export default theme

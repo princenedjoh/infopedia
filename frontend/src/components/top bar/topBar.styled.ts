@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Main = styled.div.attrs({
-    className : `Main text-xs w-full h-[70px] fixed 
-    backdrop-filter backdrop-blur-sm px-[50px] flex justify-between items-center z-10`
+    className : `Main text-xs w-full h-[70px] fixed top-0
+    backdrop-filter backdrop-blur-sm px-[50px] flex justify-center items-center z-10`
 })`
     color : ${({theme}) => theme.colors.text.dark.primary};
-    border-bottom : ${({theme}) => `2px solid ${theme.colors2.gray.gray6}`};
+    border-bottom : ${({theme}) => `2px solid ${theme.colors2.gray.gray7}`};
     background : ${({theme}) => `${theme.colors.background.light.white}b3`};
 `
 
@@ -24,7 +24,7 @@ export const LogoText = styled.div.attrs({
 `
 
 export const LogoImg = styled.img.attrs({
-    className : `LogoImg w-[30px]`
+    className : `LogoImg w-[25px]`
 })``
 
 export const Right = styled.div.attrs({
@@ -46,8 +46,8 @@ export const Navigation = styled.div.attrs({
 })``
 
 export const NavigationContainer = styled.div.attrs({
-    className : `font-semibold cursor-pointer hover:scale-[0.95]
-    px-[11px] py-[5px] pt-[4px] rounded-full`
+    className : `NavigationContainer font-semibold cursor-pointer hover:scale-[0.95]
+    px-[11px] py-[5px] rounded-full`
 })<{active : boolean}>
 `
     color : ${({theme, active}) => active? theme.colors.text.light.white : theme.colors.text.dark.primary};

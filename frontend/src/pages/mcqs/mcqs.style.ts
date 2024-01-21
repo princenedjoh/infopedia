@@ -7,11 +7,12 @@ export const Main = styled.div.attrs({
 `
 
 export const QuestionContainer = styled.div.attrs({
-    className : `QeustionContainer  p-[13px] rounded-[10px] w-full flex flex-col hover:shadow`
+    className : `QeustionContainer  p-[13px] rounded-[10px] w-full flex flex-col hover:shadow duration-300`
 })`
-    background : ${({theme}) => theme.colors.background.light.primary};
+    border : ${({theme}) => `0.5px solid ${theme.colors2.main.primary}1a`};
+    background : ${({theme}) => theme.colors2.gray.gray9};
     &:hover{
-        border : ${({theme}) => `1px solid ${theme.colors.border.light.primary}`};
+        box-shadow : ${({theme}) => `0 0 20px 2px ${theme.colors2.main.primary}26`};
     }
 `
 

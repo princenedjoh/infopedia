@@ -6,16 +6,21 @@ import { useState, useEffect, Fragment, useContext } from 'react'
 import { Outlet } from 'react-router'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import type { MenuProps } from 'antd';
-import { Button, Dropdown, Divider } from 'antd';
+import { Button, Dropdown, Divider, Badge } from 'antd';
 import './customStyles.css'
 import { BiSolidUser } from 'react-icons/bi'
-import { FaPowerOff } from 'react-icons/fa'
+import { FaBell, FaPowerOff } from 'react-icons/fa'
 import Cookies from "universal-cookie"
 import { BASE_URL } from '../../variables/variables'
 import axios from "axios"
 import Context from '../../context/context'
 import { ToastContainer } from 'react-toastify'
-import { Flex } from '../../styles/global'
+import { AppTypography, Flex } from '../../styles/global'
+import theme from '../../styles/theme'
+import { minimumWidth } from '../../utils/types'
+import { HiFire } from "react-icons/hi";
+import { IoMdArrowDropdown } from "react-icons/io";
+import Chip from '@mui/material/Chip';
 
 const cookie = new Cookies()
 
@@ -165,47 +170,78 @@ const TopBar = () => {
 
   return (
     <>
-        <Outlet/>
         <ToastContainer/>
       <topBarStyle.Main>
-        <Flex width='fit-content'>
-            <topBarStyle.Logo>
-                <topBarStyle.LogoImg src = {logos.logoMark}/>
-            </topBarStyle.Logo>
-            <topBarStyle.Navigation>
-                {
-                    navigations.map((navigationMap, index : number) => {
-                        return(
-                            <Link 
-                                to={navigationMap.route}
-                                key={index}
-                            >
-                                <topBarStyle.NavigationContainer
-                                    active={navigations[index].active}>
-                                    {navigationMap.name}
-                                </topBarStyle.NavigationContainer>
-                            </Link>
-                        )
-                    })
-                }
-            </topBarStyle.Navigation>
-        </Flex>
-        <Flex width='fit-content'>
-            <topBarStyle.Profile>
-                <div
-                    onClick={()=>menuItemsShow()}
-                >
-                    <Dropdown menu={{ items }} placement="bottomRight" arrow>
-                        <Button>
+        <Flex width={`${minimumWidth}px`} align='center' justify='space-between'>
+            <Flex width='fit-content'>
+                <topBarStyle.Logo>
+                    <topBarStyle.LogoImg src = {logos.logoMark}/>
+                </topBarStyle.Logo>
+                <topBarStyle.Navigation>
+                    {
+                        navigations.map((navigationMap, index : number) => {
+                            return(
+                                <Link 
+                                    to={navigationMap.route}
+                                    key={index}
+                                >
+                                    <topBarStyle.NavigationContainer
+                                        active={navigations[index].active}>
+                                        <AppTypography
+                                            textColor={navigations[index].active ? theme.colors2.shades.white : 'inherit'}
+                                        >
+                                            {navigationMap.name}
+                                        </AppTypography>
+                                    </topBarStyle.NavigationContainer>
+                                </Link>
+                            )
+                        })
+                    }
+                </topBarStyle.Navigation>
+            </Flex>
+            <Flex gap={20} width='fit-content' align='center'>
+                <Chip 
+                    size='small'
+                    onClick={()=>{}}
+                    deleteIcon={<IoMdArrowDropdown />} 
+                    onDelete={()=>{}}
+                    label={
+                    <AppTypography
+                        textColor={theme.colors2.gray.gray3}
+                    >
+                        Computer Science
+                    </AppTypography>
+                    } 
+                />
+                <Flex width='fit-content' margin='1px 0 0 0'>
+                    <Badge count={5} dot={true} color={theme.colors2.main.primary}>
+                        <FaBell 
+                            color={theme.colors2.gray.gray4}
+                            size={'15px'}
+                        />
+                    </Badge>
+                </Flex>
+                <HiFire 
+                    color={theme.colors2.main.primary}
+                    size={'18px'}
+                />
+                <topBarStyle.Profile>
+                    <div
+                        style={{marginTop : '2px'}}
+                        onClick={()=>menuItemsShow()}
+                    >
+                        <Dropdown menu={{ items }} placement="bottomRight" arrow>
                             < RiMapPinUserFill
-                                size={'20px'}
+                                color={theme.colors2.gray.gray4}
+                                size={'18px'}
                             />
-                        </Button>
-                    </Dropdown>
-                </div>
-            </topBarStyle.Profile>
+                        </Dropdown>
+                    </div>
+                </topBarStyle.Profile>
+            </Flex>
         </Flex>
       </topBarStyle.Main>
+      <Outlet/>
     </>
   )
 }

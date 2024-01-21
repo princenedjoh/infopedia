@@ -40,26 +40,23 @@ const questionsRoute = [
 const Router = () => {
     return(
         <Routes>
-                <Route path={'/'} element={<TopBar />}>
-                    <Route path={'/questions'} element={<SideBar />}>
-                        {
-                            questionsRoute.map((path, index : number)=>{
-                                return(
-                                    <Route key={index} path={path.path} element={<path.route />} />
-                                    
-                                )
-                            })
-                        }
-                    </Route>
-                    {
-                        standAloneRoute.map((path, index : number)=>{
-                            return(
-                                <Route key={index} path={path.path} element={<path.route />} />
-                            )
-                        })
-                    }
-                </Route>
-
+            <Route path={'/'} element={<TopBar />}>
+                {
+                    questionsRoute.map((path, index : number)=>{
+                        return(
+                            <Route key={index} path={path.path} element={<path.route />} />
+                            
+                        )
+                    })
+                }
+            </Route>
+            {
+                standAloneRoute.map((path, index : number)=>{
+                    return(
+                        <Route key={index} path={path.path} element={<path.route />} />
+                    )
+                })
+            }
         </Routes>
     )
 }

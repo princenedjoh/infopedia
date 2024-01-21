@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { minimumWidth } from "../../utils/types";
 
 export const Main = styled.div.attrs({
-    className : ` mr-[50px] ml-[330px] mt-[16px] text-sm w-full `
+    className : `w-full flex justify-center mt-[100px] text-sm w-full `
 })`
     color : ${({theme}) => theme.colors.text.dark.primary};
 `
@@ -51,7 +52,7 @@ export const Test = styled.div.attrs({
 `
 
 export const Body = styled.div.attrs({
-    className : `Body flex gap-7 justify-between w-full`
+    className : `Body flex gap-[20px] justify-between w-full`
 })``
 
 export const Left = styled.div.attrs({
@@ -60,7 +61,7 @@ export const Left = styled.div.attrs({
 `
 
 export const Right = styled.div.attrs({
-    className : `Right w-[300px] mt-[-100px]`
+    className : `Right w-[350px] flex flex-col gap-[20px]`
 })`
     
 `
@@ -68,7 +69,8 @@ export const Right = styled.div.attrs({
 export const Ads = styled.div.attrs({
     className : `Ads w-full h-[400px] rounded-[10px] flex flex-col justify-center items-center`
 })`
-    background : ${({theme}) => theme.colors.background.light.primary};
+    background : ${({theme}) => theme.colors2.gray.gray8};
+    border : ${({theme}) => `0.5px solid ${theme.colors2.main.primary}1a`};
 `
 
 export const nameHere = styled.div.attrs({

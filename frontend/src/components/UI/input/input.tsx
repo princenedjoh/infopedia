@@ -99,9 +99,11 @@ const Input = ({
                     onChange={(e)=>setState(e.target.value)}
                     style={{
                         color,
-                        borderRadius : `${radius}px`,
+                        borderRadius : radius ? `${radius}px` : '5px',
                         padding,
                         maxWidth,
+                        background,
+                        border,
                         width : size?.width,
                         height : size?.height ?? '47px',
                         fontSize : '12px'
@@ -119,9 +121,11 @@ const Input = ({
                     onChange={(e)=>setState(e.target.value)}
                     style={{
                         color,
-                        borderRadius : `${radius}px`,
+                        borderRadius : radius ? `${radius}px` : '5px',
                         padding,
                         maxWidth,
+                        background,
+                        border,
                         width : size?.width,
                         height : size?.height ?? '47px',
                         fontSize : '12px'

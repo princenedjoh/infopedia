@@ -9,3 +9,5 @@ export type inputValuesType = {
     setValue : React.Dispatch<React.SetStateAction<string>>
     errorMessage? : string | null
 }
+
+export const minimumWidth = 1080

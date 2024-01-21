@@ -4,6 +4,12 @@ import Test from '../test/test'
 import Timer from '../../components/timer/timer'
 import QuestionNumbers from '../../components/question numbers/questionNumbers'
 import { useState } from 'react'
+import { Flex } from '../../styles/global'
+import { minimumWidth } from '../../utils/types'
+import Sort from './sort/sort'
+import Schools from './schools/schools'
+import Courses from './courses/courses'
+import { FloatButton } from 'antd'
 
 const Questions = () => {
 
@@ -21,48 +27,26 @@ const Questions = () => {
   return (
     <>
         <questionsStyled.Main>
-            <questionsStyled.Head>
-            <questionsStyled.title>
-                COMPUTER SCIENCE
-            </questionsStyled.title>
-            <questionsStyled.Subtitle>
-                {'PROGRAMMING > PYTHON'}
-            </questionsStyled.Subtitle>
-            <questionsStyled.Switcher>
-                <questionsStyled.Mcqs
-                    mcqs = {mcqs}
-                    onClick={()=>switcherClick('mcqs')}
-                >
-                MCQS
-                </questionsStyled.Mcqs>
-                <questionsStyled.Test
-                    mcqs = {mcqs}
-                    onClick={()=>switcherClick('test')}
-                >
-                TEST
-                </questionsStyled.Test>
-            </questionsStyled.Switcher>
-            </questionsStyled.Head>
-            <questionsStyled.Body>
-                <questionsStyled.Left>
-                    {
-                        mcqs ?
-                        <Mcqs /> :
-                        <Test/>
-                    }
-                </questionsStyled.Left>
-                <questionsStyled.Right>
-                    {
-                        !mcqs && <Timer/>
-                    }
-                    {
-                        !mcqs && <QuestionNumbers/>
-                    }
-                    <questionsStyled.Ads>
-                        ADS
-                    </questionsStyled.Ads>
-                </questionsStyled.Right>
-            </questionsStyled.Body>
+            <Flex width={`${minimumWidth}px`}>
+                <questionsStyled.Body>
+                    <questionsStyled.Left>
+                        {
+                            // mcqs ?
+                            <Mcqs />
+                            // <Test/>
+                        }
+                    </questionsStyled.Left>
+                    <questionsStyled.Right>
+                        <Sort />
+                        <Courses />
+                        <Schools />
+                        <questionsStyled.Ads>
+                            ADS
+                        </questionsStyled.Ads>
+                    </questionsStyled.Right>
+                </questionsStyled.Body>
+            </Flex>
+            <FloatButton.BackTop visibilityHeight={0} />
         </questionsStyled.Main>
     </>
   )

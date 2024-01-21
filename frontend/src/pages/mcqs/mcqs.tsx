@@ -3,6 +3,7 @@ import * as mcqsStyle from './mcqs.style'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Interweave } from 'interweave'
+import { AppTypography, Flex } from '../../styles/global'
 
 export const alphabets = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 export interface questionsType{
@@ -60,27 +61,28 @@ const Mcqs = () => {
     <>
       <mcqsStyle.Main>
               {
-                data && data.length > 0 &&
-                data.map((dataMap, index : number)=>{
+                // data && data.length > 0 &&
+                [1,2,3,4,5].map((dataMap, index : number)=>{
                   return(
                     <mcqsStyle.QuestionContainer key={index}>
-                      <Fragment>
-                        <mcqsStyle.QuestionNumber>
-                          Question { index + 1}
-                        </mcqsStyle.QuestionNumber>
+                      <Flex direction='column'>
                         <mcqsStyle.Question
-                          showAnswer = {dataMap.showAnswer}
+                          showAnswer = {false}
                         >
                           <mcqsStyle.Left>
                             <mcqsStyle.MainQuestion>
-                              <Interweave content={ dataMap.question }/>
+                              <AppTypography>
+                                <Interweave content={ "question here" }/>
+                              </AppTypography>
                             </mcqsStyle.MainQuestion>
                             <mcqsStyle.PossibleAnswers>
                               {
-                                dataMap.possibleAnswers.map((answer, index : number)=>{
+                                [1,2,3,4].map((answer, index : number)=>{
                                   return(
                                     <mcqsStyle.PossibleAnswer key={index}>
-                                      {`${alphabets[index]}) `} <Interweave content={answer}/>
+                                      <AppTypography>
+                                        {`${alphabets[index]}) `} <Interweave content={'answer'}/>
+                                      </AppTypography>
                                     </mcqsStyle.PossibleAnswer>
                                   )
                                 })
@@ -90,7 +92,7 @@ const Mcqs = () => {
                               onClick={()=>showAnswerClick(index)}
                             >
                               {
-                                !dataMap.showAnswer ? "Show Answer" :
+                                !true ? "Show Answer" :
                                 "Hide Answer"
                               }
                             </mcqsStyle.ShowAnswer>
@@ -100,41 +102,35 @@ const Mcqs = () => {
                           </mcqsStyle.Right>
                         </mcqsStyle.Question>
                         <mcqsStyle.AnswerContainer
-                          showAnswer = {dataMap.showAnswer}
+                          showAnswer = {true}
                         >
                           <mcqsStyle.Answer
-                            showAnswer = {dataMap.showAnswer}
+                            showAnswer = {false}
                           >
-                            {
-                              dataMap.showAnswer &&
-                              dataMap.possibleAnswers.map((answer, index : number)=>{
-                                return(
-                                  <Fragment key={index}>
-                                    {
-                                      dataMap.answer === answer &&
-                                      <span
-                                        style={{
-                                          display : "flex", gap : "2px"
-                                        }}
-                                      ><mcqsStyle.AnswerText>Answer:</mcqsStyle.AnswerText> 
-                                      {`${alphabets[index]})`}  <Interweave content={answer}/></span>
-                                    }
-                                  </Fragment>
-                                )
-                              })
-                            }
+                            <span
+                              style={{
+                                display : "flex", gap : "2px"
+                              }}
+                            >
+                              <mcqsStyle.AnswerText>Answer:</mcqsStyle.AnswerText>
+                              <AppTypography>
+                                {`${alphabets[index]})`}  <Interweave content={"answer"}/>
+                              </AppTypography>
+                            </span>
                           </mcqsStyle.Answer>
                           <mcqsStyle.Explanation>
                             {
-                              dataMap.showAnswer && dataMap.explanation && dataMap.explanation?.length > 0  &&
+                              // dataMap.showAnswer && dataMap.explanation && dataMap.explanation?.length > 0  &&
                               <mcqsStyle.ExplanationText>
                                 Explanation : 
                               </mcqsStyle.ExplanationText>
                             }
-                            {dataMap.showAnswer && dataMap.explanation?.length !== 0  && dataMap.explanation}
+                            <AppTypography>
+                              {'dataMap.showAnswer && dataMap.explanation?.length !== 0  && dataMap.explanation'}
+                            </AppTypography>
                           </mcqsStyle.Explanation>
                         </mcqsStyle.AnswerContainer>
-                      </Fragment>
+                      </Flex>
                     </mcqsStyle.QuestionContainer>
                   )
                 })
