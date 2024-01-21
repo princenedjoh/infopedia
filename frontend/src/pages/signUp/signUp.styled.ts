@@ -9,11 +9,8 @@ export const Main = styled.div.attrs({
 `
 
 export const Container = styled.form.attrs({
-   className : ` Container p-[10px] py-[10px] flex flex-col w-[300px]
-   hover:shadow rounded-[10px] gap-2 items-center`
+   className : ` Container flex flex-col w-[300px] rounded-[10px] gap-2 items-center`
 })`
-    background : ${({theme}) => theme.colors.background.light.white};
-    border : ${({theme}) => `2px solid ${theme.colors.border.light.primary}`};
 `
 
 export const Head = styled.div.attrs({
@@ -21,7 +18,7 @@ export const Head = styled.div.attrs({
 })``
 
 export const Avatar = styled.img.attrs({
-    className : ` Avatar w-[30px] rounded-full overflow-visible`
+    className : ` Avatar w-[30px] w-[100px] rounded-full overflow-visible`
  })`
  `
 
@@ -30,11 +27,11 @@ export const Avatar = styled.img.attrs({
  })``
  
  export const HaveAnAccount = styled.div.attrs({
-    className : ` HaveAnAccount w-[300px] h-[50px] flex
-    hover:shadow rounded-[10px] text-xs justify-center items-center`
+    className : ` HaveAnAccount flex
+    rounded-[10px] text-xs justify-center items-center`
  })`
-     background : ${({theme}) => theme.colors.background.light.white};
-     border : ${({theme}) => `2px solid ${theme.colors.border.light.primary}`};
+   //   background : ${({theme}) => theme.colors.background.light.white};
+   //   border : ${({theme}) => `2px solid ${theme.colors.border.light.primary}`};
  `
 
  export const Link = styled.div.attrs({

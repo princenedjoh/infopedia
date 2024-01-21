@@ -9,6 +9,8 @@ import Cookies from "universal-cookie"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { questionInterface } from "../../../pages/questions/questions"
+import Tags from '../../UI/tags/tags';
+import { tagType } from '../../../utils/types';
 
 const cookie = new Cookies()
 interface questionsUpdateInterface{
@@ -48,6 +50,9 @@ const TextBox = (
     const [topics, setTopics] = useState<topicsTypes[]>([])
     const [topicsID, setTopicsID] = useState<string[]>([])
     const [explanation, setExplantion] = useState<string>()
+
+    const [programs2, setPrograms2] = useState<tagType[]>([])
+    const [selectedPrograms2, setSelectedPrograms2] = useState<tagType[]>([])
 
     const [searchPrograms, setSearchPrograms] = useState<programsTypes[]>([])
     const [searchCourses, setSearchCourses] = useState<coursesTypes[]>([])
@@ -348,28 +353,12 @@ const TextBox = (
                     <textBoxStyle.ProgamsTitle>
                         Programs
                     </textBoxStyle.ProgamsTitle>
-                    <textBoxStyle.ProgramContainer>
-                        {
-                            programs.map((programMap, index : number)=>{
-                                return(
-                                    <textBoxStyle.ProgramHeads 
-                                        onClick={()=>programClick(programMap)}
-                                        key={index}>
-                                        {programMap.name}
-                                        <MdCancel
-                                            size={"16px"}
-                                            opacity={0.5}
-                                        />
-                                    </textBoxStyle.ProgramHeads>
-                                )
-                            })
-                        }
-                        <textBoxStyle.ProgramInput
-                            placeholder='search program name'
-                            value={programInput}
-                            onChange={(e)=>setProgramInput(e.target.value)}
-                        />
-                    </textBoxStyle.ProgramContainer>
+                    <Tags 
+                        tags={programs2}
+                        setTags={setPrograms2}
+                        selectedTags={selectedPrograms2}
+                        setSelectedTags={setSelectedPrograms2}
+                    />
                 </textBoxStyle.PossibleAnswers>
 
                 {/* program search container */}

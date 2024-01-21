@@ -3,7 +3,7 @@ import { LogoText } from '../../components/top bar/topBar'
 import * as signUpStyle from './signUp.styled'
 import { Fragment, useState } from 'react'
 import { RiLockPasswordFill } from 'react-icons/ri'
-import svgs from '../../assets'
+import {logos} from '../../assets'
 import { IoEnter } from 'react-icons/io5'
 import { MdEmail } from 'react-icons/md'
 import theme from '../../styles/theme'
@@ -15,6 +15,8 @@ import "../../components/reactToastify/toastifyCustomStyles.css"
 import { BASE_URL } from '../../variables/variables'
 import { BiSolidUserPin } from 'react-icons/bi'
 import { PiGenderIntersexBold } from 'react-icons/pi'
+import Input from '../../components/UI/input/input'
+import Dropdown, { tagType } from '../../components/UI/input/dropdown'
 
 const SignUp = () => {
     const [firstName, setFirstName] = useState("")
@@ -22,6 +24,20 @@ const SignUp = () => {
     const [gender, setGender] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [genderTypes, setGenderTypes] = useState<tagType[]>([
+        {
+            name : "male",
+            id : "male"
+        },
+        {
+            name : "female",
+            id : "female"
+        },
+        {
+            name : "other",
+            id : "other"
+        },
+    ])
 
     const navigate = useNavigate()
     const data = {
@@ -144,7 +160,7 @@ const SignUp = () => {
             <ToastContainer/>
             <signUpStyle.Head>
                 <signUpStyle.Avatar
-                    src={svgs.logoImg}
+                    src={logos.logoMark}
                 />
                 <signUpStyle.Title>
                     {`Sign Up`}&nbsp;{`•`}&nbsp;<LogoText/>
@@ -153,38 +169,43 @@ const SignUp = () => {
             <signUpStyle.Container
                 onSubmit={(e)=>submitHandler(e)}
             >
-                {
-                    inputValues.map((inputValuesMap, index:number)=>{
-                        return(
-                            <Fragment key={index}>
-                                <signUpStyle.InputContainer>
-                                    <signUpStyle.InputFlex>
-                                        <signUpStyle.InputFlexLeft>
-                                            <inputValuesMap.icon
-                                                size={"16px"}
-                                                opacity={0.8}
-                                            />
-                                            <signUpStyle.InputValue
-                                                value={inputValuesMap.value}
-                                                onChange={
-                                                    (e)=>inputValuesMap.setValue(
-                                                        e.target.value
-                                                    )
-                                                }
-                                                required
-                                                placeholder={inputValuesMap.placeholder}
-                                                type={inputValuesMap.type}
-                                            />
-                                        </signUpStyle.InputFlexLeft>
-                                        <signUpStyle.InputFlexRight>
-
-                                        </signUpStyle.InputFlexRight>
-                                    </signUpStyle.InputFlex>
-                                </signUpStyle.InputContainer>
-                            </Fragment>
-                        )
-                    })
-                }
+                <Input 
+                    placeholder='firstname'
+                    value={firstName}
+                    setState={setFirstName}
+                    type="text"
+                    variant='borderless'
+                    PreIcon={BiSolidUserPin}
+                />
+                <Input 
+                    placeholder='lastname'
+                    value={lastName}
+                    setState={setLastName}
+                    type="text"
+                    PreIcon={BiSolidUserPin}
+                />
+                <Input 
+                    placeholder='email'
+                    value={email}
+                    setState={setEmail}
+                    type="email"
+                    PreIcon={MdEmail}
+                />
+                <Dropdown 
+                    placeholder='Gender'
+                    tags={genderTypes}
+                    setValue={setGender}
+                    value={gender}
+                    PreIcon={PiGenderIntersexBold}
+                />
+                <Input 
+                    type="password"
+                    value={password}
+                    setState={setPassword}
+                    placeholder='Password'
+                    allowClear
+                    PreIcon={RiLockPasswordFill}
+                />
                 <signUpStyle.Submit
                     type='submit'
                 >

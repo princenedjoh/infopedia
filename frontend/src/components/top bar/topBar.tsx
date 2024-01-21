@@ -1,5 +1,5 @@
 import * as topBarStyle from './topBar.styled'
-import svgs from '../../assets/index'
+import {logos} from '../../assets/index'
 import { IoSearch } from 'react-icons/io5'
 import { RiMapPinUserFill } from 'react-icons/ri'
 import { useState, useEffect, Fragment, useContext } from 'react'
@@ -15,6 +15,7 @@ import { BASE_URL } from '../../variables/variables'
 import axios from "axios"
 import Context from '../../context/context'
 import { ToastContainer } from 'react-toastify'
+import { Flex } from '../../styles/global'
 
 const cookie = new Cookies()
 
@@ -167,49 +168,30 @@ const TopBar = () => {
         <Outlet/>
         <ToastContainer/>
       <topBarStyle.Main>
-        <topBarStyle.Logo>
-            <topBarStyle.LogoImg src = {svgs.logoImg}/>
-            <LogoText/>
-        </topBarStyle.Logo>
-        <topBarStyle.Right>
-            <topBarStyle.SearchBar>
-                <topBarStyle.SearchInput 
-                    placeholder='Search anything...'
-                />
-                <topBarStyle.SearchIcon>
-                    <IoSearch />
-                </topBarStyle.SearchIcon>
-            </topBarStyle.SearchBar>
-            <topBarStyle.Naivgations>
-                <topBarStyle.Navigation>
-                    {
-                        navigations.map((navigationMap, index : number) => {
-                            return(
-                                <Link 
-                                    to={navigationMap.route}
-                                    key={index}
-                                >
-                                    <topBarStyle.NavigationContainer
-                                        active={navigations[index].active}>
-                                        {navigationMap.name}
-                                    </topBarStyle.NavigationContainer>
-                                </Link>
-                            )
-                        })
-                    }
-                </topBarStyle.Navigation>
-                <topBarStyle.ThemeSwicher
-                    onClick={()=>setThemeSwitcher(!themeSwitcher)}
-                >
-                    <topBarStyle.SwitcherButton
-                        themeSwitcher = {themeSwitcher}
-                        onClick={()=>setThemeSwitcher(!themeSwitcher)}
-                    >
-
-                    </topBarStyle.SwitcherButton>
-                </topBarStyle.ThemeSwicher>
-                <topBarStyle.Profile>
-                
+        <Flex width='fit-content'>
+            <topBarStyle.Logo>
+                <topBarStyle.LogoImg src = {logos.logoMark}/>
+            </topBarStyle.Logo>
+            <topBarStyle.Navigation>
+                {
+                    navigations.map((navigationMap, index : number) => {
+                        return(
+                            <Link 
+                                to={navigationMap.route}
+                                key={index}
+                            >
+                                <topBarStyle.NavigationContainer
+                                    active={navigations[index].active}>
+                                    {navigationMap.name}
+                                </topBarStyle.NavigationContainer>
+                            </Link>
+                        )
+                    })
+                }
+            </topBarStyle.Navigation>
+        </Flex>
+        <Flex width='fit-content'>
+            <topBarStyle.Profile>
                 <div
                     onClick={()=>menuItemsShow()}
                 >
@@ -221,11 +203,9 @@ const TopBar = () => {
                         </Button>
                     </Dropdown>
                 </div>
-                </topBarStyle.Profile>
-            </topBarStyle.Naivgations>
-        </topBarStyle.Right>
+            </topBarStyle.Profile>
+        </Flex>
       </topBarStyle.Main>
-        
     </>
   )
 }

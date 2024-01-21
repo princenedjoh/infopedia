@@ -1,5 +1,5 @@
 import * as topBarStyle from './topBar.styled'
-import svgs from '../../assets/index'
+import { logos } from '../../assets/index'
 import { IoSearch } from 'react-icons/io5'
 import { RiMapPinUserFill } from 'react-icons/ri'
 import { useState } from 'react'
@@ -50,10 +50,7 @@ const TopBar = () => {
         
       <topBarStyle.Main>
         <topBarStyle.Logo>
-            <topBarStyle.LogoImg src = {svgs.logoImg}/>
-            <topBarStyle.LogoText>
-                PrepRoom
-            </topBarStyle.LogoText>
+            <topBarStyle.LogoImg src = {logos.fullLogo}/>
         </topBarStyle.Logo>
         <topBarStyle.Right>
             <topBarStyle.SearchBar>

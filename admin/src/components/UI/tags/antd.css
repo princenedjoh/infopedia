@@ -1,0 +1,14 @@
+.ant-select-focused:where(.css-dev-only-do-not-override-2q8sxy).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
+    border-color: none;
+    box-shadow: none;
+    outline: 0;
+}
+
+:where(.css-dev-only-do-not-override-2q8sxy).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector{
+    border : none
+}
+
+.ant-select-selector {
+    background: inherit !important;
+    border: inherit !important;
+}

@@ -19,7 +19,7 @@ export const LogoText = styled.div.attrs({
 `
 
 export const LogoImg = styled.img.attrs({
-    className : `LogoImg`
+    className : `LogoImg w-[100px]`
 })``
 
 export const Right = styled.div.attrs({

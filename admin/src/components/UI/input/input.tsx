@@ -4,7 +4,6 @@ import { AppTypography } from '../../../styles/global'
 import theme from '../../../styles/theme'
 import { PiWarningCircleBold } from 'react-icons/pi'
 import { Input as AntdInput } from 'antd';
-import './antd.css'
 
 export interface inputStyleProps {
     color?: string
@@ -27,7 +26,6 @@ export interface inputStyleProps {
     disabled?: boolean,
     errorMessage? : string | null,
     variant? : 'outlined' | 'filled' | 'borderless'
-    allowClear? : boolean
 }
 
 interface inputProps extends inputStyleProps {
@@ -60,8 +58,7 @@ const Input = ({
     disabled,
     value,
     type,
-    variant,
-    allowClear
+    variant
 } : inputProps) => {
 
     const getStyleProps : inputStyleProps = {
@@ -94,7 +91,7 @@ const Input = ({
                     prefix={PreIcon && <PreIcon size={"13px"} color={theme.colors2.gray.gray3} />}
                     suffix={PostIcon && <PostIcon size={"13px"} color={theme.colors2.gray.gray3} />}
                     status={errorMessage ? 'error' : ''}
-                    allowClear={allowClear ?? true}
+                    allowClear
                     value={value}
                     onChange={(e)=>setState(e.target.value)}
                     style={{
@@ -114,7 +111,7 @@ const Input = ({
                     prefix={PreIcon && <PreIcon size={"13px"} color={theme.colors2.gray.gray3} />}
                     suffix={PostIcon && <PostIcon size={"13px"} color={theme.colors2.gray.gray3} />}
                     status={errorMessage ? 'error' : ''}
-                    allowClear={allowClear ?? true}
+                    allowClear
                     value={value}
                     onChange={(e)=>setState(e.target.value)}
                     style={{

@@ -3,7 +3,7 @@ import { LogoText } from '../../components/top bar/topBar'
 import * as loginStyle from './login.styled'
 import { Fragment, useContext, useState } from 'react'
 import { RiLockPasswordFill } from 'react-icons/ri'
-import svgs from '../../assets'
+import {logos} from '../../assets'
 import { IoEnter } from 'react-icons/io5'
 import { MdEmail } from 'react-icons/md'
 import theme from '../../styles/theme'
@@ -72,24 +72,32 @@ const Login = () => {
         }
     }
 
-    const inputValues : inputValuesType[] = [
+    const [inputValues, setInputValues] = useState<inputValuesType[]>([
         {
             title : "Email",
             type : "email",
-            placeholder : "email",
+            placeholder : "Input email",
             icon : MdEmail,
             value : email,
-            setValue : setEmail
+            setValue : setEmail,
+            errorMessage : null
         },
         {
             title : "Password",
             type : "password",
-            placeholder : "Password",
+            placeholder : "Input Password",
             icon : RiLockPasswordFill,
             value : password,
-            setValue : setPassword
+            setValue : setPassword,
+            errorMessage : null
         },
-    ]
+    ])
+
+    const setErrorMessage = (index : number, message : string | null) => {
+        let inputValuesCopy = inputValues
+        inputValuesCopy[index].errorMessage = message
+        setInputValues(inputValuesCopy)
+    }
 
     const [terms, setTerms] = useState([
         {
@@ -110,7 +118,7 @@ const Login = () => {
         <loginStyle.Main>
             <loginStyle.Head>
                 <loginStyle.Avatar
-                    src={svgs.logoImg}
+                    src={logos.logoMark}
                 />
                 <loginStyle.Title>
                     {`Login`}&nbsp;{`•`}&nbsp;<LogoText/>
@@ -125,10 +133,11 @@ const Login = () => {
                             <Fragment key={index}>
                                 <Input 
                                     value={inputValuesMap.value}
-                                    setValue={inputValuesMap.setValue}
+                                    setState={inputValuesMap.setValue}
                                     type={inputValuesMap.type}
                                     background={theme.colors2.gray.gray7}
                                     border='none'
+                                    placeholder={inputValuesMap.placeholder ?? ''}
                                     PreIcon={inputValuesMap.icon}
                                 />
                             </Fragment>

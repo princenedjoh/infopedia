@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Main = styled.div.attrs({
-    className : `Main text-xs w-full h-[50px] fixed 
-    backdrop-filter backdrop-blur-sm
-    shadow-[0px_4px_7px_#D3D3EA] px-[50px] flex items-center z-10`
+    className : `Main text-xs w-full h-[70px] fixed 
+    backdrop-filter backdrop-blur-sm px-[50px] flex justify-between items-center z-10`
 })`
     color : ${({theme}) => theme.colors.text.dark.primary};
+    border-bottom : ${({theme}) => `2px solid ${theme.colors2.gray.gray6}`};
     background : ${({theme}) => `${theme.colors.background.light.white}b3`};
 `
 
@@ -14,7 +14,7 @@ export const Outlet = styled.div.attrs({
 })``
 
 export const Logo = styled.div.attrs({
-    className : `Logo flex gap-1 mr-[200px] cursor-pointer`
+    className : `Logo flex gap-1 mr-[120px] cursor-pointer`
 })``
 
 export const LogoText = styled.div.attrs({
@@ -24,7 +24,7 @@ export const LogoText = styled.div.attrs({
 `
 
 export const LogoImg = styled.img.attrs({
-    className : `LogoImg`
+    className : `LogoImg w-[30px]`
 })``
 
 export const Right = styled.div.attrs({

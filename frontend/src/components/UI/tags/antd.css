@@ -1,0 +1,10 @@
+
+.ant-select-selector {
+    background: inherit !important;
+    height: 47px !important;
+}
+
+.hover:ant-select-selector{
+    border-color: #1677ff !important;
+    box-shadow: 0 0 0 2px rgba(5, 145, 255, 0.1) !important;
+}

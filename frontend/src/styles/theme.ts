@@ -1,7 +1,7 @@
 const theme = {
     colors : {
         main : {
-            primary : '#6969F4',
+            primary : '#9772AE',
             secondary : '#e0e0ff'
         },
         background : {
@@ -51,7 +51,7 @@ const theme = {
 
     colors2 : {
         main : {
-            primary : "#6BC36B"
+            primary : "#9772AE"
         },
 
         gray : {

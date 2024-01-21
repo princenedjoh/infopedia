@@ -262,8 +262,12 @@ const SideBar = () => {
     const [showTopics, setShowTopics] = useState(false)
 
     const getPrograms = async () => {
-        const programs = await axios.get("http://localhost:3001/programs/getAllPrograms")
-        console.log(programs.data)
+        try {
+            const programs = await axios.get("http://localhost:3001/programs/getAllPrograms")
+            console.log(programs.data)
+        } catch (error) {
+            console.log(error)
+        }
     }
     useEffect(()=>{
         getPrograms()

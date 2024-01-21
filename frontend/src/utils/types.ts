@@ -7,4 +7,5 @@ export type inputValuesType = {
     icon? : IconType,
     value : string,
     setValue : React.Dispatch<React.SetStateAction<string>>
+    errorMessage? : string | null
 }
