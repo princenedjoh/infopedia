@@ -45,6 +45,8 @@ export const Flex = styled.div.attrs({
   justify-content : ${({ justify }) => justify ? justify : "flex-start"};
   align-items : ${({ align }) => align ? align : "flex-start"};
   width : ${({ width }) => width ? width : "100%"};
+  max-width : ${({ maxWidth }) => maxWidth};
+  max-height : ${({ maxHeight }) => maxHeight};
   height : ${({ height }) => height ? height : undefined};
   color: ${({ theme, textColor, colorTheme }) => colorTheme ? colorTheme : textColor ? textColor : theme.colors2.gray.gray1};
   border-radius : ${({ rounded }) => rounded ? rounded : 0};
@@ -76,12 +78,14 @@ export const Clickable = styled.div.attrs({
 `
 
 export const ClickableTab = styled.div.attrs({
-  className : ` Clickable flex px-[10px] py-[3px] rounded-full`
+  className : ` Clickable flex  `
 })<clickableProps>`
+  cursor : ${({ cursor }) => cursor ? cursor : 'pointer'};
+  border-radius : ${({ radius }) => radius ?? '100px'};
+  margin : ${({ margin }) => margin ?? 0};
+  padding : ${({ padding }) => padding ?? "3px 10px"};
   &:hover{
-    background: ${({ theme }) => `${theme.colors.gray.gray5}80`};
-    cursor : ${({ cursor }) => cursor ? cursor : 'pointer'};
+    background: ${({ theme }) => `${theme.colors2.gray.gray5}80`};
     opacity : 0.8;
-    transform : scale(0.9)
  }
 `

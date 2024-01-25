@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Main = styled.div.attrs({
-    className : `Main text-xs w-full h-[70px] fixed top-0
-    backdrop-filter backdrop-blur-sm px-[50px] flex justify-center items-center z-10`
+    className : `Main text-xs w-[100vw] h-[70px] fixed top-0 ml-[-8px]
+    backdrop-filter backdrop-blur-sm flex justify-center items-center z-10`
 })`
     color : ${({theme}) => theme.colors.text.dark.primary};
     border-bottom : ${({theme}) => `2px solid ${theme.colors2.gray.gray7}`};
@@ -89,4 +89,13 @@ export const SearchInput = styled.input.attrs({
     className : `w-full h-full mr-[10px] placeholder:text-xs outline-none text-xs`
 })`
    background : ${({theme}) => theme.colors.background.light.primary};
+`
+
+export const CourseSearch = styled.div.attrs({
+   className : ` CourseSearch w-[200px] h-[300px] p-[10px] rounded-[5px] duration-300 absolute 
+   top-[30px] right-0 flex flex-col gap-[10px] shadow-xl overflow-scroll`
+})<{visible? : boolean}>`
+    display : ${({visible}) => visible ? 'flex' : 'none'};
+    border : ${({theme}) => `0.5px solid ${theme.colors2.main.primary}1a`};
+    background : ${({theme}) => theme.colors2.shades.white};
 `

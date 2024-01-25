@@ -8,16 +8,71 @@ import Chip from '@mui/material/Chip';
 import theme from '../../../styles/theme';
 import { TypographyBold, TypographySize } from '../../../styles/style.types';
 import './schools.css'
+import { FaImage } from 'react-icons/fa';
+
+interface schoolsInterface {
+    name : string,
+    image : string
+}
 
 const Schools = () => {
 
     const [searchValue, setSearchValue] = useState('')
+    const [schools, setSchools] = useState([
+        'KNUST', 'UCC', 'UEW', 'University of Ghana', 'UDS',
+        'Accra Technical Institute'
+    ])
+    const [selectedSchools, setSelectedSchools] = useState<string[]>([])
+
+    const addSelectedSchool = (index : number) => {
+        let selectedSchoolsCopy = selectedSchools
+        selectedSchoolsCopy.push(schools[index])
+        const filteredSchool = schools.filter((school) => {
+            return schools[index] !== school
+        })
+        setSchools([...filteredSchool])
+    }
+
+    const removeSelectedSchool = (index : number) => {
+        let schoolsCopy = schools
+        schoolsCopy.push(selectedSchools[index])
+        const filteredSchool = selectedSchools.filter((school) => {
+            return selectedSchools[index] !== school
+        })
+        setSelectedSchools([...filteredSchool])
+    }
 
     return (
         <schoolsStyle.Main>
             <AppTypography>
                 Schools
             </AppTypography>
+            <Flex flexWrap margin='5px 0 0 0'>
+                {
+                    selectedSchools.map((chip, index : number)=>{
+                        return (
+                            <Chip
+                                size='small'
+                                onDelete={()=>removeSelectedSchool(index)}
+                                label={
+                                    <Flex 
+                                        width='fit-content'
+                                        margin='2px 0 0 0'>
+                                        <AppTypography
+                                            textColor={theme.colors2.gray.gray3}
+                                            size={TypographySize.xs}
+                                            bold={TypographyBold.md}
+                                            ellipsis
+                                            maxLines={1}
+                                        >
+                                            {chip}
+                                        </AppTypography>
+                                    </Flex>
+                                } />
+                        )
+                    })
+                }
+            </Flex>
             <Input
                 PreIcon={FiSearch}
                 value={searchValue}
@@ -29,22 +84,16 @@ const Schools = () => {
             />
             <Flex flexWrap margin='5px 0 0 0'>
                 {
-                    [1,2,3,4,5,6,7,8,9,10].map((chip, index : number)=>{
+                    schools.map((chip, index : number)=>{
                         return (
-                            <Chip 
-                                size='small'
-                                deleteIcon={
-                                    <schoolsStyle.Number>
-                                        <AppTypography
-                                            size={TypographySize.xs}
-                                            textColor={theme.colors2.shades.white}
-                                        >
-                                            200
-                                        </AppTypography>
-                                    </schoolsStyle.Number>
+                            <Chip
+                                avatar={
+                                    <Avatar>
+                                        <FaImage/>
+                                    </Avatar>
                                 }
-                                onDelete={()=>{}}
                                 clickable
+                                onClick={()=>addSelectedSchool(index)}
                                 label={
                                     <AppTypography
                                         textColor={theme.colors2.gray.gray3}
@@ -53,7 +102,7 @@ const Schools = () => {
                                         ellipsis
                                         maxLines={1}
                                     >
-                                        KNUST
+                                        {chip}
                                     </AppTypography>
                                 } />
                         )

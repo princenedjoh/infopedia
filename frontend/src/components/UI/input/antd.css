@@ -14,3 +14,8 @@
 :where(.css-dev-only-do-not-override-1wazalj).ant-input-affix-wrapper .ant-input-clear-icon-has-suffix {
     margin: -6px 0 0 0;
 }
+
+:where(.css-dev-only-do-not-override-1wazalj).ant-select-single:not(.ant-select-customize-input) .ant-select-selector{
+    background: none;
+    border : none;
+}

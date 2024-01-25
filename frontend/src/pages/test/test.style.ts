@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Main = styled.div.attrs({
-    className : `Main text-xs w-full flex flex-col gap-3 pb-[100px]`
+    className : `Main text-xs w-full flex flex-col gap-3 mt-[100px]`
 })`
     color : ${({theme}) => theme.colors.text.dark.black};
 `

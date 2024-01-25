@@ -14,13 +14,13 @@ import { FloatButton } from 'antd'
 import theme from '../../styles/theme'
 import Input from '../../components/UI/input/input'
 import { FiSearch } from "react-icons/fi";
-import { Difficulty } from './questions.styled';
 import { IoMdArrowDropdown } from "react-icons/io";
+import Topics from './topics/topics'
+import Difficulty from './difficulty/difficaulty'
 
 const Questions = () => {
 
     const [mcqs, setMcqs] = useState(true)
-    const [searchValue, setSearchValue] = useState('')
     const switcherClick = (name : string) => {
         if(name === 'mcqs'){
             !mcqs &&
@@ -37,53 +37,8 @@ const Questions = () => {
             <Flex width={`${minimumWidth}px`}>
                 <questionsStyled.Body>
                     <questionsStyled.Left>
-                        <Flex gap={20}>
-                            <AppTypography
-                                textColor={theme.colors2.gray.gray2}
-                            >
-                                Topics
-                            </AppTypography>
-                            {
-                                [1,2,3,4,5,6].map((chip, index : number) => {
-                                    return (
-                                        <Chip 
-                                            size='small'
-                                            onClick={()=>{}}
-                                            label={
-                                            <AppTypography
-                                                textColor={theme.colors2.gray.gray3}
-                                            >
-                                                Python
-                                            </AppTypography>
-                                            } 
-                                        />
-                                    )
-                                })
-                            }
-                        </Flex>
-                        <Flex>
-                            <Input
-                                PreIcon={FiSearch}
-                                value={searchValue}
-                                setState={setSearchValue}
-                                background={`${theme.colors2.gray.gray7}`}
-                                border='none'
-                                type='text'
-                                placeholder='Search Courses'
-                            />
-                            <questionsStyled.Difficulty>
-                                <Flex justify='space-between' align='center'>
-                                    <AppTypography
-                                        textColor={theme.colors2.gray.gray3}
-                                    >
-                                        Difficulty
-                                    </AppTypography>
-                                    <IoMdArrowDropdown
-                                        color={theme.colors2.gray.gray3}
-                                    />
-                                </Flex>
-                            </questionsStyled.Difficulty>
-                        </Flex>
+                        <Topics/>
+                        <Difficulty/>
                         {
                             // mcqs ?
                             <Mcqs />

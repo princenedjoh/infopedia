@@ -4,6 +4,9 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Interweave } from 'interweave'
 import { AppTypography, Flex } from '../../styles/global'
+import { IoMdArrowDropdown } from "react-icons/io";
+import theme from '../../styles/theme'
+import Button from '../../components/UI/button/button'
 
 export const alphabets = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 export interface questionsType{
@@ -65,6 +68,11 @@ const Mcqs = () => {
                 [1,2,3,4,5].map((dataMap, index : number)=>{
                   return(
                     <mcqsStyle.QuestionContainer key={index}>
+                      <mcqsStyle.QuestionNumber>
+                        <AppTypography>
+                          {index + 1}
+                        </AppTypography>
+                      </mcqsStyle.QuestionNumber>
                       <Flex direction='column'>
                         <mcqsStyle.Question
                           showAnswer = {false}
@@ -88,14 +96,28 @@ const Mcqs = () => {
                                 })
                               }
                             </mcqsStyle.PossibleAnswers>
-                            <mcqsStyle.ShowAnswer
-                              onClick={()=>showAnswerClick(index)}
-                            >
-                              {
-                                !true ? "Show Answer" :
-                                "Hide Answer"
-                              }
-                            </mcqsStyle.ShowAnswer>
+                              <Button
+                                type='button'
+                                variant='text'
+                                text={
+                                  !true ? "Show Answer" :
+                                  "Hide Answer"
+                                }
+                              />
+                              <Flex 
+                                onClick={()=>showAnswerClick(index)}
+                                width='fit-content'>
+                                  <AppTypography>
+                                    {
+                                      !true ? "Show Answer" :
+                                      "Hide Answer"
+                                    }
+                                  </AppTypography>
+                                <IoMdArrowDropdown
+                                  rotate='90 deg'
+                                  color={theme.colors2.gray.gray3}
+                                />
+                              </Flex>
                           </mcqsStyle.Left>
                           <mcqsStyle.Right>
                               ?

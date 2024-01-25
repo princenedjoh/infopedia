@@ -47,11 +47,9 @@ export const PossibleAnswer = styled.div.attrs({
 })``
 
 export const ShowAnswer = styled.div.attrs({
-    className : `ShowAnswer hover:opacity-[0.85] hover:scale-[0.99] cursor-pointer p-[7px] text-[10px] px-[12px] pt-[6px] rounded-full w-fit`
+    className : `ShowAnswer hover:opacity-[0.85] cursor-pointer `
 })
 `
-    background : ${({theme}) => theme.colors.main.primary};
-    color : ${({theme}) => theme.colors.text.light.white};
 `
 
 export const AnswerContainer = styled.div.attrs({

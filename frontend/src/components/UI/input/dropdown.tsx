@@ -50,7 +50,17 @@ const Dropdown = ({
     tags, 
     value,
     setValue,
-    placeholder
+    placeholder,
+    background,
+    size,
+    color,
+    disabled,
+    PreIcon,
+    PostIcon,
+    border,
+    radius,
+    padding,
+    errorMessage
 } : tagsInterface) => {
 
     const handleChange = (value : string) => {
@@ -66,9 +76,13 @@ const Dropdown = ({
     return (
             <Select
                 style={{ 
-                    width: '100%',
-                    minHeight : "47px",
-                    fontSize : '12px'
+                    width: size?.width ?? '100%',
+                    height : size?.height ?? "47px",
+                    background,
+                    color,
+                    borderRadius : radius ? `${radius}px` : '5px',
+                    fontSize : '12px',
+                    border
                  }}
                 filterOption={
                     (value, option) => 

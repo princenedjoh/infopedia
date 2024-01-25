@@ -135,8 +135,6 @@ const Login = () => {
                                     value={inputValuesMap.value}
                                     setState={inputValuesMap.setValue}
                                     type={inputValuesMap.type}
-                                    background={theme.colors2.gray.gray7}
-                                    border='none'
                                     placeholder={inputValuesMap.placeholder ?? ''}
                                     PreIcon={inputValuesMap.icon}
                                 />

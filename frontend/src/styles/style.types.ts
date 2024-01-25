@@ -49,6 +49,8 @@ export interface flexProps {
   align ? : string,
   width ? : string,
   height ? : string
+  maxWidth ? : string
+  maxHeight ? : string
   textColor?: string;
   colorTheme? : string;
   flexWrap? : boolean
@@ -73,4 +75,7 @@ export interface hrProps {
 
 export interface clickableProps {
   cursor? : string
+  radius? : string
+  padding? : string
+  margin? : string
 }
