@@ -62,6 +62,6 @@ export const Content = styled.div.attrs({
    className : ` Content flex gap-2 p-[10px] rounded-[5px] cursor-pointer `
 })`
     &:hover {
-        background: ${({ theme }) => `${theme.colors.gray.gray7}`};
+        background: ${({ theme }) => `${theme.colors2.gray.gray7}`};
     }
 `

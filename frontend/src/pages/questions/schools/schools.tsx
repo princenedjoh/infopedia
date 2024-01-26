@@ -9,6 +9,7 @@ import theme from '../../../styles/theme';
 import { TypographyBold, TypographySize } from '../../../styles/style.types';
 import './schools.css'
 import { FaImage } from 'react-icons/fa';
+import { BiSolidSchool } from "react-icons/bi";
 
 interface schoolsInterface {
     name : string,
@@ -44,10 +45,18 @@ const Schools = () => {
 
     return (
         <schoolsStyle.Main>
-            <AppTypography>
-                Schools
-            </AppTypography>
-            <Flex flexWrap margin='5px 0 0 0'>
+            <Flex 
+                width='fit-content'
+                align='center'
+            >
+                <BiSolidSchool 
+                    color={theme.colors2.gray.gray3}
+                />
+                <AppTypography>
+                    Schools
+                </AppTypography>
+            </Flex>
+            <Flex flexWrap>
                 {
                     selectedSchools.map((chip, index : number)=>{
                         return (
@@ -57,7 +66,7 @@ const Schools = () => {
                                 label={
                                     <Flex 
                                         width='fit-content'
-                                        margin='2px 0 0 0'>
+                                        >
                                         <AppTypography
                                             textColor={theme.colors2.gray.gray3}
                                             size={TypographySize.xs}
@@ -82,7 +91,7 @@ const Schools = () => {
                 type='text'
                 placeholder='Search Courses'
             />
-            <Flex flexWrap margin='5px 0 0 0'>
+            <Flex flexWrap >
                 {
                     schools.map((chip, index : number)=>{
                         return (

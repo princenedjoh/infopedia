@@ -62,7 +62,7 @@ export const Hr = styled.div.attrs({
 })<hrProps>`
   width : ${({ size }) => size?.width? size.width : '100%'};
   height : ${({ size }) => size?.height? size.height : '1px'};
-  background: ${({ background, theme }) => background ? background : `${theme.colors.gray.gray7}`};
+  background: ${({ background, theme }) => background ? background : `${theme.colors2.gray.gray7}`};
   margin : ${({ margin }) => margin ? margin : '0'};
   padding : ${({ padding }) => padding ? padding : '0'};
 `

@@ -7,6 +7,7 @@ import { AppTypography, Flex } from '../../styles/global'
 import { IoMdArrowDropdown } from "react-icons/io";
 import theme from '../../styles/theme'
 import Button from '../../components/UI/button/button'
+import { TypographySize } from '../../styles/style.types'
 
 export const alphabets = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 export interface questionsType{
@@ -96,32 +97,30 @@ const Mcqs = () => {
                                 })
                               }
                             </mcqsStyle.PossibleAnswers>
-                              <Button
-                                type='button'
-                                variant='text'
-                                text={
-                                  !true ? "Show Answer" :
-                                  "Hide Answer"
-                                }
-                              />
-                              <Flex 
-                                onClick={()=>showAnswerClick(index)}
-                                width='fit-content'>
-                                  <AppTypography>
-                                    {
-                                      !true ? "Show Answer" :
-                                      "Hide Answer"
-                                    }
-                                  </AppTypography>
-                                <IoMdArrowDropdown
-                                  rotate='90 deg'
-                                  color={theme.colors2.gray.gray3}
-                                />
-                              </Flex>
                           </mcqsStyle.Left>
-                          <mcqsStyle.Right>
-                              ?
-                          </mcqsStyle.Right>
+                          <Flex 
+                            direction='column'
+                            justify='space-between'
+                            align='flex-end'
+                            width='fit-content'
+                          >
+                            <mcqsStyle.Right>
+                                ?
+                            </mcqsStyle.Right>
+                            <Button
+                              size={{
+                                width : '110px'
+                              }}
+                              textSize={'xs'}
+                              PostIcon={IoMdArrowDropdown}
+                              type='button'
+                              variant='text'
+                              text={
+                                !true ? "Show Answer" :
+                                "Hide Answer"
+                              }
+                            />
+                          </Flex>
                         </mcqsStyle.Question>
                         <mcqsStyle.AnswerContainer
                           showAnswer = {true}

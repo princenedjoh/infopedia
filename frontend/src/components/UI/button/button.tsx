@@ -1,4 +1,4 @@
-import { AppTypography } from "../../../styles/global";
+import { AppTypography, Flex } from "../../../styles/global";
 import theme from "../../../styles/theme";
 import * as buttonStyle from './cButton.style'
 import { TypographySize, TypographyBold } from "../../../styles/style.types";
@@ -95,7 +95,7 @@ const Button = ({
                 color={
                   color 
                     ? color 
-                    : theme.colors2.green.green3
+                    : theme.colors2.main.primary
                 }
               /> 
             : <></>
@@ -108,7 +108,7 @@ const Button = ({
           <AppTypography 
             size={textSize ? TypographySize?.[textSize] : TypographySize.sm} 
             bold={textBold ? TypographyBold?.[textBold] : TypographyBold.md} 
-            textColor={color? color : theme.colors2.green.green3}
+            textColor={color? color : theme.colors2.main.primary}
             colorTheme={colorTheme && "inherit"}>
             {text}
           </AppTypography>
@@ -116,13 +116,17 @@ const Button = ({
         {
           PostIcon
             && !showLoader 
-            && <PostIcon 
-                  color={
-                    color 
-                      ? color 
-                      : theme.colors2.green.green3
-                  }
-                />
+            && <Flex 
+                margin='-3px 0 0 0'
+                width='fit-content'>
+                <PostIcon
+                    color={
+                      color 
+                        ? color 
+                        : theme.colors2.main.primary
+                    }
+                  />
+            </Flex>
         }
       </LoadingButton>
     </buttonStyle.ButtonStyle>

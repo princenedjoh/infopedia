@@ -17,6 +17,7 @@ import { FiSearch } from "react-icons/fi";
 import { IoMdArrowDropdown } from "react-icons/io";
 import Topics from './topics/topics'
 import Difficulty from './difficulty/difficaulty'
+import Settings from './settings/settings'
 
 const Questions = () => {
 
@@ -46,6 +47,7 @@ const Questions = () => {
                         }
                     </questionsStyled.Left>
                     <questionsStyled.Right>
+                        <Settings />
                         <Sort />
                         <Courses />
                         <Schools />

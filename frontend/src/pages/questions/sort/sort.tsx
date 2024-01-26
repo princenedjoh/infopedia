@@ -5,7 +5,8 @@ import { AppTypography, Flex } from '../../../styles/global'
 import theme from '../../../styles/theme';
 import * as sortStyle from './sort.style'
 import { Difficulty } from './sort.style';
-import { FaGear } from "react-icons/fa6";
+import { IoLockOpen } from "react-icons/io5";
+import { FaSortAmountDown } from "react-icons/fa";
 
 const Sort = () => {
 
@@ -22,13 +23,21 @@ const Sort = () => {
         <sortStyle.Main
             onClick={handleToggleSort}
         >
-            <AppTypography>
-                Sort
-            </AppTypography>
+            <Flex 
+                width='fit-content'
+                align='center'
+            >
+                <FaSortAmountDown 
+                    color={theme.colors2.gray.gray3}
+                />
+                <AppTypography>
+                    Sort
+                </AppTypography>
+            </Flex>
             <sortStyle.Difficulty>
                 <Flex justify='space-between' align='center'>
                     <Flex align='center' width='fit-content'>
-                        <FaGear 
+                        <IoLockOpen 
                             color={theme.colors2.gray.gray3}
                         />
                         <AppTypography

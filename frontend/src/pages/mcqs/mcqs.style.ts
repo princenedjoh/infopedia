@@ -72,7 +72,7 @@ export const Explanation = styled.div.attrs({
 export const Right = styled.div.attrs({
     className : `Right rounded-full h-[25px] w-[25px] font-bold cursor-pointer hover:opacity-[0.7] flex justify-center items-center`
 })`
-    background : ${({theme}) => theme.colors.main.primary};
+    background : ${({theme}) => `${theme.colors.main.primary}80`};
     color : ${({theme}) => theme.colors.text.light.white};
 `
 
