@@ -28,24 +28,29 @@ const questionsRoute = [
     }
 ]
 
-const navRoutes = [
+export const navRoutes = [
     {
+        name : 'home',
         path : '/',
         route : Home
     },
     {
+        name : 'questions',
         path : '/questions',
         route : Questions
     },
     {
+        name : 'POD',
         path : '/pod',
         route : Pod
     },
     {
-        path : '/testconfig',
+        name : 'test',
+        path : '/test/testconfig',
         route : TestConfig
     },
     {
+        name : 'notification',
         path : '/notification',
         route : Notification
     },

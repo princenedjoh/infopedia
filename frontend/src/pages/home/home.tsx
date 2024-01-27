@@ -1,16 +1,34 @@
 import * as homeStyle from './home.styled'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Flex } from '../../styles/global'
+import '../../utils/defaultImports'
 import { minimumWidth } from '../../utils/types'
+import * as i from '../../utils/defaultImports'
+import Hero from './components/hero/hero'
+import Topics from './components/topics/topics'
+import Personalize from './components/personalize/personalize'
+import Benefit from './components/benefits/benefits'
+import Experience from './components/experience/experience'
+import Footer from '../../components/footer/footer'
 
 const Home = () => {
 
+  i.useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+
   return (
     <homeStyle.Main>
-      <Flex width={`${minimumWidth}px`}>
-          Home
-      </Flex>
+      <Hero />
+      <i.Hr/>
+      <i.Flex
+        width={`${minimumWidth}px`}
+      >
+        <Topics />
+      </i.Flex>
+      <i.Hr/>
+      <Personalize />
+      <Benefit />
+      <Experience />
+      <Footer />
     </homeStyle.Main>
   )
 }

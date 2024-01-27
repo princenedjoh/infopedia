@@ -69,7 +69,7 @@ const TopBar = () => {
         },
         {
             name : 'Test',
-            route : '/testconfig',
+            route : '/test/testconfig',
             active : false
         }
     ])

@@ -1,25 +1,26 @@
 import { Chip } from "@mui/material"
-import { Flex, AppTypography } from "../../../styles/global"
-import theme from "../../../styles/theme"
+import * as i from '../../../../utils/defaultImports'
 import { useState } from "react"
 
 const Topics = () => {
 
     const [topics, setTopics] = useState([
-        'Python', 'Introduction to mechanicsIntroduction to mechanicsIntroduction to mechanicsIntroduction to mechanics', 'Ergonomics', 'astrophysics'
+        'Python', 'Introduction to mechanicsIntroduction to mechanicsIntroduction to mechanicsIntroduction to mechanics', 'Ergonomics', 'astrophysics',
+        'Python', 'Introduction to mechanicsIntroduction to mechanicsIntroduction to mechanicsIntroduction to mechanics', 'Ergonomics', 'astrophysics',
+        'Python',
     ])
 
     return (
-        <Flex>
-            <AppTypography
-                textColor={theme.colors2.gray.gray2}
+        <i.Flex>
+            <i.AppTypography
+                textColor={i.theme.colors2.gray.gray2}
             >
                 Topics
-            </AppTypography>
+            </i.AppTypography>
             {
                 topics.map((chip, index : number) => {
                     return (
-                        <Flex 
+                        <i.Flex
                             width='fit-content'
                             maxWidth='120px'
                         >
@@ -28,20 +29,20 @@ const Topics = () => {
                                 onClick={()=>{}}
                                 key={index}
                                 label={
-                                <AppTypography
+                                <i.AppTypography
                                     ellipsis
                                     maxLines={1}
-                                    textColor={theme.colors2.gray.gray2}
+                                    textColor={i.theme.colors2.gray.gray2}
                                 >
                                     {chip}
-                                </AppTypography>
+                                </i.AppTypography>
                                 } 
                             />
-                        </Flex>
+                        </i.Flex>
                     )
                 })
             }
-        </Flex>
+        </i.Flex>
     )
 }
 

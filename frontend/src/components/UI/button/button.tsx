@@ -110,7 +110,7 @@ const Button = ({
             bold={textBold ? TypographyBold?.[textBold] : TypographyBold.md} 
             textColor={color? color : theme.colors2.main.primary}
             colorTheme={colorTheme && "inherit"}>
-            {text}
+            {text.toLowerCase()}
           </AppTypography>
         }
         {
