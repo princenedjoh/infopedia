@@ -1,15 +1,10 @@
 import styled from "styled-components";
 
 export const Main = styled.div.attrs({
-    className : `Main text-xs w-[100vw] h-[70px] fixed top-0 ml-[-8px]
+    className : `Main text-xs w-[100%] h-[70px]
     backdrop-filter backdrop-blur-sm flex justify-center items-center z-10`
 })`
     color : ${({theme}) => theme.colors.text.dark.primary};
-    border-bottom : ${({theme}) => `2px solid ${theme.colors2.gray.gray7}`};
-    background : ${({theme}) => `${theme.colors.background.light.white}b3`};
-    &:hover{
-        background : ${({theme}) => `${theme.colors.background.light.white}`};
-    }
 `
 
 export const Outlet = styled.div.attrs({

@@ -27,6 +27,7 @@ export interface AppTypographyProps {
   display? : string
   ellipsis? : boolean
   maxLines? : number
+  lineHeight? : number
 }
 
 export interface buttonProps {

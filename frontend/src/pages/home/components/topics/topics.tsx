@@ -7,7 +7,7 @@ const Topics = () => {
     const [topics, setTopics] = useState([
         'Python', 'Introduction to mechanicsIntroduction to mechanicsIntroduction to mechanicsIntroduction to mechanics', 'Ergonomics', 'astrophysics',
         'Python', 'Introduction to mechanicsIntroduction to mechanicsIntroduction to mechanicsIntroduction to mechanics', 'Ergonomics', 'astrophysics',
-        'Python',
+        'Python', 'Ergonomics', 'astrophysics', 'Python', 'Ergonomics', 'astrophysics',
     ])
 
     return (

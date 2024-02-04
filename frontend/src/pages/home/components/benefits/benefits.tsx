@@ -2,6 +2,7 @@ import { Chip } from '@mui/material'
 import * as i from '../../../../utils/defaultImports'
 import * as benefitStyle from './benefits.style'
 import { FaCircleCheck } from "react-icons/fa6";
+import {ReactComponent as Illustration} from '../../../../assets/images/study1.svg'
 
 const Benefit = () => {
 
@@ -17,21 +18,28 @@ const Benefit = () => {
                 width={`${i.minimumWidth}px`}
             >
                 <benefitStyle.Container>
-                    <i.Flex>
-                        <i.Flex direction='column'>
+                    <i.Flex
+                        position='relative'
+                        align='center'
+                        justify='center'
+                    >
+                        <i.Flex 
+                            direction='column'
+                            width='fit-content'
+                        >
                             <i.AppTypography
                                 size={i.TypographySize.lg2}
                                 bold={i.TypographyBold.md}
                                 textColor={i.theme.colors2.main.primary}
+                                lineHeight={1.2}
                             >
                                 Steady smarter not <b>Harder!</b>
                             </i.AppTypography>
                             <i.Flex>
                                 <i.AppTypography
                                     size={i.TypographySize.sm2}
-                                    textColor={i.theme.colors2.gray.gray3}
                                 >
-                                    Leverage out intelligent study tools to optimize your learning
+                                    Leverage our intelligent study tools to optimize your learning
                                     and retain information
                                 </i.AppTypography>
                             </i.Flex>
@@ -63,9 +71,12 @@ const Benefit = () => {
                                 type='button'
                             />
                         </i.Flex>
-                    </i.Flex>
-                    <i.Flex>
-                        
+                        <benefitStyle.imageContainer>
+                            <Illustration 
+                                width={400}
+                                height={400}
+                            />
+                        </benefitStyle.imageContainer>
                     </i.Flex>
                 </benefitStyle.Container>
             </i.Flex>

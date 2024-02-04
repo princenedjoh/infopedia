@@ -8,6 +8,8 @@ import Personalize from './components/personalize/personalize'
 import Benefit from './components/benefits/benefits'
 import Experience from './components/experience/experience'
 import Footer from '../../components/footer/footer'
+import HomeTopBar from '../../components/home top bar/topBar'
+import TopBar from '../../components/top bar/topBar'
 
 const Home = () => {
 
@@ -17,18 +19,16 @@ const Home = () => {
 
   return (
     <homeStyle.Main>
-      <Hero />
-      <i.Hr/>
-      <i.Flex
-        width={`${minimumWidth}px`}
+      <i.Flex 
+        direction='column'
+        gap={200}  
       >
-        <Topics />
+        <Hero />
+        <Personalize />
+        <Benefit />
+        <Experience />
+        <Footer />
       </i.Flex>
-      <i.Hr/>
-      <Personalize />
-      <Benefit />
-      <Experience />
-      <Footer />
     </homeStyle.Main>
   )
 }

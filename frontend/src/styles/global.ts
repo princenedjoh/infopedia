@@ -16,6 +16,7 @@ export const AppTypography = styled.span<AppTypographyProps>`
   font-style: ${({ italic }) => (italic ? "italic" : "normal")};
   text-align : ${({ textAlign }) => (textAlign ? textAlign : "left")};
   cursor: ${({ clickable }) => (clickable ? 'pointer' : undefined)};
+  line-height: ${({ lineHeight }) => (lineHeight && lineHeight)};
   width : fit-content;
   outline: none;
   word-wrap: break-word;
