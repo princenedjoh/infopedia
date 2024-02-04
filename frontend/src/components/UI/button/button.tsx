@@ -6,7 +6,7 @@ import { IconType } from "react-icons/lib";
 import { CircularProgress } from "@mui/material";
 import LoadingButton from '@mui/lab/LoadingButton';
 import { ElementType, useState } from "react";
-import './antd.css'
+import './antd.style.css'
 
 type ButtonTypes = 'submit' | 'button'
 

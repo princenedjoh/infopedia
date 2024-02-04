@@ -4,7 +4,7 @@ import { AppTypography } from '../../../styles/global'
 import theme from '../../../styles/theme'
 import { PiWarningCircleBold } from 'react-icons/pi'
 import { Input as AntdInput } from 'antd';
-import './antd.css'
+import './antd.style.css'
 
 export interface inputStyleProps {
     color?: string

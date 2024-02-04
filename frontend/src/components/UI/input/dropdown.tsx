@@ -6,7 +6,7 @@ import Input from '../input/input'
 import * as tagsStyle from './dropdown.style'
 import { GiCancel } from 'react-icons/gi'
 import { Select, type SelectProps } from 'antd';
-import './antd.css'
+import './antd.style.css'
 import { IconType } from 'react-icons'
 
 export interface tagType {
