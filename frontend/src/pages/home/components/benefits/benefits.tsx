@@ -35,7 +35,9 @@ const Benefit = () => {
                             >
                                 Steady smarter not <b>Harder!</b>
                             </i.AppTypography>
-                            <i.Flex>
+                            <i.Flex
+                                margin='0 0 0 5px'
+                            >
                                 <i.AppTypography
                                     size={i.TypographySize.sm2}
                                 >
@@ -43,7 +45,10 @@ const Benefit = () => {
                                     and retain information
                                 </i.AppTypography>
                             </i.Flex>
-                            <i.Flex direction='column'>
+                            <i.Flex 
+                                direction='column'
+                                margin='0 0 0 5px'
+                            >
                                 {
                                     benefits.map((benefit, index : number) => {
                                         return (
@@ -64,9 +69,9 @@ const Benefit = () => {
                             <i.PrimaryButton 
                                 text='Get Started'
                                 size={{
-                                    width : 'fit-content',
-                                    height : 'fit-content'
+                                    width : '150px',
                                 }}
+                                variant='outlined'
                                 radius={100}
                                 type='button'
                             />

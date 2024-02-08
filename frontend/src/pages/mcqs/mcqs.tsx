@@ -7,7 +7,7 @@ import { AppTypography, Flex } from '../../styles/global'
 import { IoMdArrowDropdown } from "react-icons/io";
 import theme from '../../styles/theme'
 import Button from '../../components/UI/button/button'
-import { TypographySize } from '../../styles/style.types'
+import Impressions from './components/impressions'
 
 export const alphabets = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 export interface questionsType{
@@ -71,7 +71,7 @@ const Mcqs = () => {
                     <mcqsStyle.QuestionContainer key={index}>
                       <mcqsStyle.QuestionNumber>
                         <AppTypography>
-                          {index + 1}
+                          Question {index + 1}
                         </AppTypography>
                       </mcqsStyle.QuestionNumber>
                       <Flex direction='column'>
@@ -151,6 +151,7 @@ const Mcqs = () => {
                             </AppTypography>
                           </mcqsStyle.Explanation>
                         </mcqsStyle.AnswerContainer>
+                        <Impressions/>
                       </Flex>
                     </mcqsStyle.QuestionContainer>
                   )

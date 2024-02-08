@@ -40,8 +40,8 @@ export const navRoutes = [
         route : Questions
     },
     {
-        name : 'POD',
-        path : '/pod',
+        name : 'challenges',
+        path : '/challenges',
         route : Pod
     },
     {

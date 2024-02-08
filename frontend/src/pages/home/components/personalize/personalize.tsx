@@ -4,30 +4,38 @@ import * as personalizeStyle from './personalize.style'
 import { FaFileInvoice } from "react-icons/fa6";
 import Topics from '../topics/topics';
 import {ReactComponent as Illustration} from '../../../../assets/images/study2.svg'
+import { ImPowerCord } from "react-icons/im";
+import { FaLightbulb } from "react-icons/fa";
+import { IoLocationSharp } from "react-icons/io5";
+import { FaUsers } from "react-icons/fa6";
 
 const Personalize = () => {
     
     const [data, setData] = i.useState([
         {
-            icon : FaFileInvoice,
+            icon : ImPowerCord,
             title : 'Efficeient Preparation',
-            text : 'We ensure focused and efficient preparation that aligns with your individual needs'
+            text : 'We ensure focused and efficient preparation that aligns with your individual needs',
+            color : i.theme.colors2.blue.blue3
         },
         {
-            icon : FaFileInvoice,
-            title : 'Personalize your studies',
-            text : 'Tailor your study sessions by selecting specific topics, setting study goals and creating a personalized study plan'
+            icon: FaLightbulb,
+            title: 'Flexible Study Schedule',
+            text: 'Create a study schedule that fits your lifestyle and commitments, helping you stay organized and motivated.',
+            color : i.theme.colors2.green.green3
         },
         {
-            icon : FaFileInvoice,
+            icon : IoLocationSharp,
             title : 'Study anytime anywhere',
-            text : 'Access PrepRoom on your favorite device, allowing you to study on the go.'
+            text : 'Access PrepRoom on your favorite device, allowing you to study on the go.',
+            color : i.theme.colors2.orange.orange3
         },
         {
-            icon : FaFileInvoice,
-            title : 'Efficeient Preparation',
-            text : 'We ensure focused and efficient preparation that aligns with your individual needs'
-        }
+            icon: FaUsers,
+            title: 'Peer Guidance',
+            text: 'Receive guidance and support from your peers in the discussion sessions of every question.',
+            color : i.theme.colors2.main.primary
+        },
     ])
 
     return (
@@ -63,6 +71,20 @@ const Personalize = () => {
                         width={400}
                         height={400}
                     />
+                    <i.Flex
+                        justify='center'
+                        margin='0 0 0 -40px'
+                    >
+                        <i.PrimaryButton 
+                            text='Get Started'
+                            size={{
+                                width : '150px',
+                            }}
+                            variant='outlined'
+                            radius={100}
+                            type='button'
+                        />
+                    </i.Flex>
                 </i.Flex>
                 <i.Flex
                     width='fit-content'
@@ -76,23 +98,30 @@ const Personalize = () => {
                                 <personalizeStyle.Container
                                     key={index}
                                     index={index}
+                                    themeColor={info.color}
                                 >
                                     <Avatar 
                                         style={{ 
-                                            backgroundColor: i.theme.colors2.red.red5,
+                                            backgroundColor: `${info.color}33`,
                                             display : 'flex',
                                             justifyContent : 'center',
-                                            alignItems : 'center'
+                                            alignItems : 'center',
+                                            width : '55px',
+                                            height : '50px'
                                         }}
                                         icon={
                                             <info.icon 
-                                                color={i.theme.colors2.red.red3}
+                                                color={info.color}
+                                                size={30}
                                             />
                                         }
                                     />
-                                    <i.Flex direction='column'>
+                                    <i.Flex 
+                                        direction='column'
+                                        gap={3}
+                                    >
                                         <i.AppTypography
-                                            textColor={i.theme.colors2.main.primary}
+                                            textColor={info.color}
                                             bold={i.TypographyBold.md}
                                         >
                                             {info.title}
@@ -107,15 +136,6 @@ const Personalize = () => {
                             )
                         })
                     }
-                    <i.PrimaryButton 
-                        text='Get Started'
-                        size={{
-                            width : '150px',
-                        }}
-                        variant='outlined'
-                        radius={100}
-                        type='button'
-                    />
                 </i.Flex>
             </i.Flex>
         </personalizeStyle.Main>

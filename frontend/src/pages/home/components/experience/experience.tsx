@@ -1,6 +1,7 @@
 import { images } from '../../../../assets'
 import * as i from '../../../../utils/defaultImports'
 import * as experienceStyle from './experirence.style'
+import { GiPowerLightning } from "react-icons/gi";
 
 const Experience = () => {
 
@@ -8,17 +9,20 @@ const Experience = () => {
         {
             image : images.gradHat,
             title : 'Boost your performance',
-            text : 'Leverage detailed insights to focus your efforts on areas that need improvements'
+            text : 'Leverage detailed insights to focus your efforts on areas that need improvements',
+            color : i.theme.colors2.main.primary
         },
         {
             image : images.cert,
             title : 'Personalize your studies',
-            text : 'Tailor your study sessions by selecting specific topics, setting study goals and creating a personalized study plan'
+            text : 'Tailor your study sessions by selecting specific topics, setting study goals and creating a personalized study plan',
+            color : i.theme.colors2.orange.orange3
         },
         {
             image : images.smartPhone,
             title : 'Study anytime anywhere',
-            text : 'Access PrepRoom on your favorite device, allowing you to study on the go.'
+            text : 'Access PrepRoom on your favorite device, allowing you to study on the go.',
+            color : i.theme.colors2.green.green3
         },
     ])
 
@@ -30,13 +34,24 @@ const Experience = () => {
                 align='center'
                 gap={20}
             >
-                <i.AppTypography
-                    size={i.TypographySize.lg2}
-                    bold={i.TypographyBold.md}
-                    textColor={i.theme.colors2.main.primary}
+                <i.Flex
+                    direction='column'
+                    width='fit-content'
+                    align='center'
+                    gap={5}
                 >
-                    Experience the power of PrepRoom
-                </i.AppTypography>
+                    <GiPowerLightning
+                        color={i.theme.colors2.main.primary}
+                        size={30}
+                    />
+                    <i.AppTypography
+                        size={i.TypographySize.lg2}
+                        bold={i.TypographyBold.md}
+                        textColor={i.theme.colors2.main.primary}
+                    >
+                        Experience the power of PrepRoom
+                    </i.AppTypography>
+                </i.Flex>
                 <i.Flex 
                     width={`${i.minimumWidth}px`}
                     justify='center'
@@ -45,24 +60,35 @@ const Experience = () => {
                     {
                         data.map((item, index : number) => {
                             return (
-                                <i.Flex
-                                    key={index}
-                                    direction='column'
-                                    align='center'
+                                <experienceStyle.Container
+                                    background={item.color}
                                 >
-                                    <i.AppTypography
-                                        size={i.TypographySize.md2}
-                                        bold={i.TypographyBold.md}
-                                        textColor={i.theme.colors2.main.primary}
+                                    <i.Flex
+                                        key={index}
+                                        direction='column'
+                                        align='center'
+                                        padding='30px'
+                                        width='fit-content'
                                     >
-                                        {item.title}
-                                    </i.AppTypography>
-                                    <i.AppTypography
-                                        textAlign='center'
-                                    >
-                                        {item.text}
-                                    </i.AppTypography>
-                                </i.Flex>
+                                        <experienceStyle.ImageContainer
+                                            bgURL={item.image}
+                                        >
+
+                                        </experienceStyle.ImageContainer>
+                                        <i.AppTypography
+                                            size={i.TypographySize.md2}
+                                            bold={i.TypographyBold.md}
+                                            textColor={i.theme.colors2.main.primary}
+                                        >
+                                            {item.title}
+                                        </i.AppTypography>
+                                        <i.AppTypography
+                                            textAlign='center'
+                                        >
+                                            {item.text}
+                                        </i.AppTypography>
+                                    </i.Flex>
+                                </experienceStyle.Container>
                             )
                         })
                     }

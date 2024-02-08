@@ -25,6 +25,10 @@ import Input from '../../components/UI/input/input'
 import { FiSearch } from "react-icons/fi";
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 import SwipeableTemporaryDrawer from './components/drawer'
+import { GoHomeFill } from "react-icons/go";
+import { RiQuestionAnswerFill } from "react-icons/ri";
+import { HiTrophy } from "react-icons/hi2";
+import { AiFillSafetyCertificate } from "react-icons/ai";
 
 const cookie = new Cookies()
 
@@ -55,22 +59,26 @@ const TopBar = () => {
         {
             name : 'Home',
             route : '/',
-            active : false
+            active : false,
+            icon : GoHomeFill
         },
         {
             name : 'Questions',
             route : '/questions',
-            active : false
+            active : false,
+            icon : RiQuestionAnswerFill
         },
         {
-            name : 'POD',
-            route : '/pod',
-            active : false
+            name : 'Challenges',
+            route : '/challenges',
+            active : false,
+            icon : HiTrophy
         },
         {
             name : 'Test',
             route : '/test/testconfig',
-            active : false
+            active : false,
+            icon : AiFillSafetyCertificate
         }
     ])
 
@@ -182,6 +190,7 @@ const TopBar = () => {
                                 >
                                     <topBarStyle.NavigationContainer
                                         active={navigationMap.active}>
+                                        <navigationMap.icon/>
                                         <AppTypography
                                             textColor={navigationMap.active ? theme.colors2.shades.white : 'inherit'}
                                         >

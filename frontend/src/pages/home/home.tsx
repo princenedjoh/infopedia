@@ -10,6 +10,7 @@ import Experience from './components/experience/experience'
 import Footer from '../../components/footer/footer'
 import HomeTopBar from '../../components/home top bar/topBar'
 import TopBar from '../../components/top bar/topBar'
+import { FloatButton } from 'antd'
 
 const Home = () => {
 
@@ -21,12 +22,13 @@ const Home = () => {
     <homeStyle.Main>
       <i.Flex 
         direction='column'
-        gap={200}  
+        gap={100}  
       >
         <Hero />
         <Personalize />
         <Benefit />
         <Experience />
+        <FloatButton.BackTop />
         <Footer />
       </i.Flex>
     </homeStyle.Main>

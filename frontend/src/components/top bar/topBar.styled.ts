@@ -49,8 +49,8 @@ export const Navigation = styled.div.attrs({
 })``
 
 export const NavigationContainer = styled.div.attrs({
-    className : `NavigationContainer font-semibold cursor-pointer hover:scale-[0.95]
-    px-[11px] py-[5px] rounded-full`
+    className : `NavigationContainer flex gap-[5px] items-center justify-center
+    font-semibold cursor-pointer hover:scale-[0.95] px-[11px] py-[5px] rounded-full`
 })<{active : boolean}>
 `
     color : ${({theme, active}) => active? theme.colors.text.light.white : theme.colors.text.dark.primary};
