@@ -189,8 +189,8 @@ const TopBar = () => {
                                     key={index}
                                 >
                                     <topBarStyle.NavigationContainer
-                                        active={navigationMap.active}>
-                                        <navigationMap.icon/>
+                                        active={navigationMap.active}
+                                    >
                                         <AppTypography
                                             textColor={navigationMap.active ? theme.colors2.shades.white : 'inherit'}
                                         >
