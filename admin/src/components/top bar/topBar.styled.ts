@@ -1,16 +1,29 @@
 import styled from "styled-components";
 
 export const Main = styled.div.attrs({
-    className : `Main text-xs w-full h-[50px] fixed px-[50px] flex items-center z-100`
+    className : `Main text-xs w-[100vw] h-[65px] fixed top-0
+    backdrop-filter backdrop-blur-sm flex justify-center items-center z-[1201]`
 })`
     color : ${({theme}) => theme.colors.text.dark.primary};
-    border-bottom : ${({theme}) => `5px solid ${theme.colors.main.primary}`};
-    background : ${({theme}) => theme.colors.background.light.white};
+    border-bottom : ${({theme}) => `2px solid ${theme.colors2.gray.gray7}`};
+    // box-shadow: ${({theme}) => `0 0 2px ${theme.colors2.gray.gray4}` };
+    background : ${({theme}) => `${theme.colors.background.light.white}4d`};
+    &:hover{
+        background : ${({theme}) => `${theme.colors.background.light.white}`};
+    }
 `
 
-export const Logo = styled.div.attrs({
-    className : `Logo flex gap-1 mr-[200px] cursor-pointer`
+export const Outlet = styled.div.attrs({
+    className : `realtive `
 })``
+
+export const Logo = styled.div.attrs({
+    className : `Logo flex gap-1 mr-[120px] cursor-pointer`
+})`
+    &:hover{
+        opacity : 0.8;
+    }
+`
 
 export const LogoText = styled.div.attrs({
     className : `LogoText font-bold text-sm`
@@ -23,7 +36,7 @@ export const LogoImg = styled.img.attrs({
 })``
 
 export const Right = styled.div.attrs({
-    className : `w-full flex justify-between h-full items-center`
+    className : `flex h-full items-center`
 })``
 
 export const SearchBar = styled.div.attrs({
@@ -37,13 +50,12 @@ export const Naivgations = styled.div.attrs({
 })``
 
 export const Navigation = styled.div.attrs({
-    className : `Navigation w-[250px] h-full flex items-center gap-5
-    `
+    className : `Navigation h-full flex items-center gap-5 `
 })``
 
 export const NavigationContainer = styled.div.attrs({
-    className : `NavigationContainer font-semibold cursor-pointer hover:scale-[0.95]
-    px-[11px] py-[5px] pt-[4px] rounded-full`
+    className : `NavigationContainer flex gap-[5px] items-center justify-center
+    font-semibold cursor-pointer hover:scale-[0.95] px-[11px] py-[5px] rounded-full`
 })<{active : boolean}>
 `
     color : ${({theme, active}) => active? theme.colors.text.light.white : theme.colors.text.dark.primary};
@@ -51,20 +63,6 @@ export const NavigationContainer = styled.div.attrs({
     &:hover {
         background : ${({theme, active}) => !active && theme.colors.background.light.primary}
     }
-`
-
-export const Notification = styled.div.attrs({
-    className : `Notification cursor-pointer hover:scale-[0.95]
-    px-[11px] py-[5px] pt-[4px] rounded-full relative`
-})``
-
-export const NotifNumber = styled.div.attrs({
-    className : `NotifNumber w-[10px] h-[10px] rounded-full
-    absolute top-0 right-[10px] `
-})`
-    background : ${({theme}) => theme.colors.main.primary};
-    color : ${({theme}) => theme.colors.text.light.white};
-    border : ${({theme}) => `2px solid ${theme.colors.background.light.white}`};
 `
 
 export const ThemeSwicher = styled.div.attrs({
@@ -87,6 +85,10 @@ export const Profile = styled.div.attrs({
     className : `h-full flex items-center hover:scale-[0.95] mt-[-3px] cursor-pointer`
 })``
 
+export const Menu = styled.div.attrs({
+   className : ` Menu flex gap-1 h-[20px] items-center `
+})``
+
 export const SearchIcon = styled.div.attrs({
     className : `cursor-pointer`
 })``
@@ -95,4 +97,13 @@ export const SearchInput = styled.input.attrs({
     className : `w-full h-full mr-[10px] placeholder:text-xs outline-none text-xs`
 })`
    background : ${({theme}) => theme.colors.background.light.primary};
+`
+
+export const CourseSearch = styled.div.attrs({
+   className : ` CourseSearch w-[200px] h-[300px] p-[10px] rounded-[5px] duration-300 absolute 
+   top-[30px] right-0 flex flex-col gap-[10px] shadow-xl overflow-scroll`
+})<{visible? : boolean}>`
+    display : ${({visible}) => visible ? 'flex' : 'none'};
+    border : ${({theme}) => `0.5px solid ${theme.colors2.main.primary}1a`};
+    background : ${({theme}) => theme.colors2.shades.white};
 `

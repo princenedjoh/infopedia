@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const Main = styled.div.attrs({
     className : `Main w-full flex flex-col gap-5 py-[15px] 
-    px-[15px] rounded-[10px] hover:shadow`
+    px-[15px] rounded-[10px]`
 })`
     background : ${({theme}) => theme.colors.background.light.primary};
-    border : ${({theme}) => `1px solid ${theme.colors.border.light.primary}`};
+    border : ${({theme}) => `0.5px solid ${theme.colors2.main.primary}1a`};
 `
 
 export const QuestionTop = styled.div.attrs({

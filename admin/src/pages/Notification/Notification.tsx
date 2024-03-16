@@ -5,12 +5,8 @@ const Notification = () => {
     <>
         <notificationStyle.Main>
             <notificationStyle.MainLeft>
-
+              notif
             </notificationStyle.MainLeft>
-            Notifications
-            <notificationStyle.Ads>
-                ADS
-            </notificationStyle.Ads>
         </notificationStyle.Main>
     </>
   )

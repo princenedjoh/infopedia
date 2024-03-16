@@ -2,6 +2,8 @@ import { Fragment, useState } from 'react'
 import * as questionsStyle from './questions.styled'
 import TextBox from '../../components/richTextBox/textBoxEditor/textBox'
 import { Interweave } from 'interweave';
+import { minimumWidth } from '../../utils/types';
+import { Flex } from '../../styles/global';
 
 export const alphabets = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
@@ -33,10 +35,10 @@ const Questions = () => {
   return (
     <>
       <questionsStyle.MainContainer>
-        <questionsStyle.Main>
-          <questionsStyle.MainLeft>
-
-          </questionsStyle.MainLeft>
+        <Flex
+          width={`${minimumWidth}px`}
+          justify='space-between'
+        >
           <questionsStyle.MainRight>
               {
                 questions?.length > 0 &&
@@ -123,18 +125,20 @@ const Questions = () => {
               }
             <questionsStyle.Bottom>
               <TextBox
-                questionUpdated={questionUpdated} setQuestionUpdated={setQuestionUpdated}
-                questions={questions} setQuestions={setQuestions}
+                questionUpdated={questionUpdated} 
+                setQuestionUpdated={setQuestionUpdated}
+                questions={questions} 
+                setQuestions={setQuestions}
               />
             </questionsStyle.Bottom>
             <questionsStyle.WhiteSpcace>
 
             </questionsStyle.WhiteSpcace>
           </questionsStyle.MainRight>
-          <questionsStyle.Ads>
+          {/* <questionsStyle.Ads>
             ADS
-          </questionsStyle.Ads>
-        </questionsStyle.Main>
+          </questionsStyle.Ads> */}
+        </Flex>
       </questionsStyle.MainContainer>
     </>
   )

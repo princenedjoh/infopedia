@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Main = styled.div.attrs({
     className : `Main w-full pr-[50px]
-    pt-[25px] flex justify-between gap-5`
+    pt-[50px] flex justify-between gap-5`
 })``
 
 export const MainLeft = styled.div.attrs({

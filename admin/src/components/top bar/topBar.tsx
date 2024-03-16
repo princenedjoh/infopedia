@@ -1,15 +1,22 @@
 import * as topBarStyle from './topBar.styled'
-import { logos } from '../../assets/index'
+import { logos } from '../../assets'
 import { IoSearch } from 'react-icons/io5'
 import { RiMapPinUserFill } from 'react-icons/ri'
-import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { IoNotifications } from "react-icons/io5"
 import theme from '../../styles/theme'
-
+import { Badge } from 'antd';
+import { Flex, ClickableTab } from '../../styles/global'
+import { FaBell } from 'react-icons/fa'
+import { minimumWidth } from '../../utils/types'
+import { Avatar, Chip } from "@mui/material"
+import * as i from '../../utils/defaultImports'
 
 const TopBar = () => {
     const location = useLocation().pathname
+    const [themeSwitcher, setThemeSwitcher] = useState(false)
+    const navigate = useNavigate()
     const [navigations, setNavigation] = useState([
         {
             name : 'Home',
@@ -27,90 +34,107 @@ const TopBar = () => {
             active : location === '/notification' ? true : false
         }
     ])
+
+    const getCurrentTab = () => {
+        const locationSplit = location.split('/')
+        return locationSplit[1]
+    }
     
-    const navigationClick = (name : string, route : string) => {
-        const navigationsCopy = navigations
-        for(const i in navigationsCopy){
-            if( navigationsCopy[i].name === name){
-                if(!navigationsCopy[i].active){
-                    navigationsCopy[i].active = true
-                }
-            }
-            else{
-                navigationsCopy[i].active = false
-            }
+    const setActiveTab = () => {
+        const currentTab = getCurrentTab().toLowerCase()
+        let navigationsCopy = navigations
+        for(let navigation of navigationsCopy){
+            currentTab === "" 
+                ? navigation.name.toLowerCase() === 'home'
+                ? navigation.active = true
+                : navigation.active = false
+                : navigation.name.toLowerCase() === currentTab
+                    ? navigation.active = true
+                    : navigation.active = false
         }
         setNavigation([...navigationsCopy])
     }
 
-    const [themeSwitcher, setThemeSwitcher] = useState(false)
+    useEffect(()=>{
+        setActiveTab()
+    },[location])
 
   return (
     <>
-        
       <topBarStyle.Main>
-        <topBarStyle.Logo>
-            <topBarStyle.LogoImg src = {logos.fullLogo}/>
-        </topBarStyle.Logo>
-        <topBarStyle.Right>
-            <topBarStyle.SearchBar>
-                <topBarStyle.SearchInput 
-                    placeholder='Search anything...'
-                />
-                <topBarStyle.SearchIcon>
-                    <IoSearch />
-                </topBarStyle.SearchIcon>
-            </topBarStyle.SearchBar>
-            <topBarStyle.Naivgations>
-                <topBarStyle.Navigation>
-                    {
-                        navigations.map((navigationMap, index : number) => {
-                            return(
-                                <Link 
-                                    to={navigationMap.route}
-                                    key={index}
-                                >
-                                    {
-                                        navigationMap.name === "notification" ?
-                                        <topBarStyle.Notification>
-                                            <IoNotifications
-                                                size={"18px"}
-                                                color={theme.colors.background.dark.secondary}
-                                            />
-                                            <topBarStyle.NotifNumber>
-                                            </topBarStyle.NotifNumber>
-                                        </topBarStyle.Notification>:
-                                        <topBarStyle.NavigationContainer 
-                                            onClick={()=>navigationClick(
-                                                navigationMap.name,
-                                                navigationMap.route
-                                            )}
-                                            active={navigations[index].active}>
-                                            {navigationMap.name}
-                                        </topBarStyle.NavigationContainer>
-                                    }
-                                </Link>
-                            )
-                        })
-                    }
-                </topBarStyle.Navigation>
-                <topBarStyle.ThemeSwicher
-                    onClick={()=>setThemeSwitcher(!themeSwitcher)}
+        <Flex 
+            align='center' 
+            justify='space-between'
+            margin='0 50px 0 30px'
+        >
+
+            <topBarStyle.Logo
+                onClick={()=>navigate('/')}
+            >
+                <topBarStyle.LogoImg src = {logos.fullLogo}/>
+            </topBarStyle.Logo>
+            <topBarStyle.Right>
+                {/* <topBarStyle.SearchBar>
+                    <topBarStyle.SearchInput 
+                        placeholder='Search anything...'
+                    />
+                    <topBarStyle.SearchIcon>
+                        <IoSearch />
+                    </topBarStyle.SearchIcon>
+                </topBarStyle.SearchBar> */}
+                <Flex
+                    width='fit-content'
                 >
-                    <topBarStyle.SwitcherButton
-                        themeSwitcher = {themeSwitcher}
+                    {/* <topBarStyle.ThemeSwicher
                         onClick={()=>setThemeSwitcher(!themeSwitcher)}
                     >
+                        <topBarStyle.SwitcherButton
+                            themeSwitcher = {themeSwitcher}
+                            onClick={()=>setThemeSwitcher(!themeSwitcher)}
+                        >
 
-                    </topBarStyle.SwitcherButton>
-                </topBarStyle.ThemeSwicher>
-                <topBarStyle.Profile>
-                    < RiMapPinUserFill
-                        size={'20px'}
-                    />
-                </topBarStyle.Profile>
-            </topBarStyle.Naivgations>
-        </topBarStyle.Right>
+                        </topBarStyle.SwitcherButton>
+                    </topBarStyle.ThemeSwicher> */}
+                    <Flex 
+                        width='fit-content'
+                        align='center'
+                        gap={20}
+                    >
+                        <Chip
+                            avatar={
+                                <Avatar>
+                                    <Flex
+                                        width='fit-content'
+                                        margin='3px'
+                                    >
+                                        <i.AppTypography
+                                            textColor={i.theme.colors2.shades.white}
+                                            bold={i.TypographyBold.md}
+                                            size={i.TypographySize.xs}
+                                        >
+                                            PN
+                                        </i.AppTypography>
+                                    </Flex>
+                                </Avatar>
+                            }
+                            onClick={()=>{}}
+                            label={
+                            <i.AppTypography
+                                ellipsis
+                                maxLines={1}
+                                textColor={theme.colors2.gray.gray2}
+                                bold={i.TypographyBold.sm}
+                                size={i.TypographySize.xs}
+                            >
+                                Prince Nedjoh
+                            </i.AppTypography>
+                            } 
+                        />
+                    </Flex>
+
+                </Flex>
+            </topBarStyle.Right>
+        </Flex>
       </topBarStyle.Main>
     </>
   )

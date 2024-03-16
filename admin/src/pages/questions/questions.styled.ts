@@ -1,16 +1,9 @@
 import styled from "styled-components";
+import { minimumWidth } from "../../utils/types";
 
 export const MainContainer = styled.div.attrs({
-    className : `MainContainer w-full pr-[35px]
-    pt-[25px] flex justify-between gap-5 `
+    className : `MainContainer w-full pt-[30px] flex justify-center gap-5 `
 })``
-
-
-export const Main = styled.div.attrs({
-    className : `Main text-xs w-full flex gap-5`
-})`
-    color : ${({theme}) => theme.colors.text.dark.black};
-`
 
 export const MainLeft = styled.div.attrs({
     className : `MainLeft min-w-[310px] justify-between h-screen`
@@ -21,11 +14,11 @@ export const Ads = styled.div.attrs({
     flex justify-center items-center`
 })`
     background : ${({theme}) => theme.colors.background.light.primary};
+    border : ${({theme}) => `0.5px solid ${theme.colors2.main.primary}1a`};
 `
 
 export const MainRight = styled.div.attrs({
-    className : `MainRight text-xs w-full  flex flex-col gap-5 
-    min-w-[0px]`
+    className : `MainRight text-xs w-full  flex flex-col gap-5`
 })``
 
 export const Top = styled.div.attrs({
@@ -42,7 +35,7 @@ export const WhiteSpcace = styled.div.attrs({
 
 export const QuestionContainer = styled.div.attrs({
     className : `QeustionContainer  p-[13px] rounded-[10px] w-full flex flex-col 
-    duration-1000 hover:shadow`
+    duration-1000 `
 })<{questionUpdated : boolean}>
 `
     background : ${({theme, questionUpdated}) => questionUpdated? theme.colors.main.primary : 

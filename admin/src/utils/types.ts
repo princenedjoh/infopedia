@@ -35,3 +35,5 @@ export interface inputStyleProps {
 export interface tagType {
     id : string, name : string
 }
+
+export const minimumWidth = 1080

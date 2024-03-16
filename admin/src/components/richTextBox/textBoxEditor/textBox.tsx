@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css"
 import { questionInterface } from "../../../pages/questions/questions"
 import Tags from '../../UI/tags/tags';
 import { tagType } from '../../../utils/types';
+import * as i from '../../../utils/defaultImports'
 
 const cookie = new Cookies()
 interface questionsUpdateInterface{
@@ -291,241 +292,252 @@ const TextBox = (
 
     return (
         <>
-            <textBoxStyle.Main id='main'>
+            <i.Flex
+                direction='column'
+                gap={20}
+            >
                 <ToastContainer/>
-                <textBoxStyle.QuestionTop>
-                    <textBoxStyle.Title>
-                        Question
-                    </textBoxStyle.Title>
-                    <textBoxStyle.Question>
-                        <GeneralQuillEditorTextbox
-                            setValue={setQuestion}
-                        />
-                    </textBoxStyle.Question>
-                </textBoxStyle.QuestionTop>
-                <textBoxStyle.PossibleAnswers>
-                    <textBoxStyle.AnswerTiltle>
-                        Answers
-                    </textBoxStyle.AnswerTiltle>
-                    <textBoxStyle.Answers>
-                        {
-                            possibleAnswers.map((answerMap, index : number)=>{
-                                return(
-                                    <textBoxStyle.AnswerSpan
-                                        key={index}
-                                    >
-                                        {
-                                            possibleAnswers.length > 1 &&
-                                            <textBoxStyle.CancelButton
-                                                onClick={()=>deleteButton(index)}
-                                            >
-                                                x
-                                            </textBoxStyle.CancelButton>
-                                        }
-                                        <textBoxStyle.Radio
-                                            onChange={(e)=>handleRadioChange(e)}
-                                            value={answerMap}
-                                            type={'radio'}
-                                            name={`radioGroup`}
-                                        />
-                                        {`${alphabets[index]})`}
-                                        <textBoxStyle.Answer>
-                                            <QuillEditorTextbox
-                                                values={possibleAnswers}
-                                                setValue={setPossibleAnswers}
-                                                index={index}
-                                            />
-                                        </textBoxStyle.Answer>
-                                    </textBoxStyle.AnswerSpan>
-                                )
-                            })
-                        }
-                        <textBoxStyle.AddAnswer
-                            onClick={()=>addButtonClick()}
-                        >
-                            +
-                        </textBoxStyle.AddAnswer>
-                    </textBoxStyle.Answers>
-                </textBoxStyle.PossibleAnswers>
-
-                {/* programs */}
-                <textBoxStyle.PossibleAnswers>
-                    <textBoxStyle.ProgamsTitle>
-                        Programs
-                    </textBoxStyle.ProgamsTitle>
-                    <Tags 
-                        tags={programs2}
-                        setTags={setPrograms2}
-                        selectedTags={selectedPrograms2}
-                        setSelectedTags={setSelectedPrograms2}
-                    />
-                </textBoxStyle.PossibleAnswers>
-
-                {/* program search container */}
-                {
-                    programInput && searchPrograms.length > 0 ?
-                    <textBoxStyle.SearchContainer>
-                        <textBoxStyle.ResultTitle>
-                            Results
-                        </textBoxStyle.ResultTitle>
-                        {
-                            searchPrograms.map((searchProgramsMap, index : number)=>{
-                                return(
-                                    <Fragment key={index}>
-                                        <textBoxStyle.SearchItem
-                                            onClick={()=>searchProgramClick(searchProgramsMap)}
-                                        >
-                                            {searchProgramsMap.name}
-                                        </textBoxStyle.SearchItem>
-                                            <hr/>
-                                    </Fragment>
-                                )
-                            })
-                        }
-                    </textBoxStyle.SearchContainer> :
-                    <></>
-                }
-                {
-                    programInput && searchPrograms.length <= 0 ?   
-                    <textBoxStyle.SearchContainer>
-                        <textBoxStyle.NoResults>
-                            No Results found
-                        </textBoxStyle.NoResults>
-                    </textBoxStyle.SearchContainer>:
-                    <></>
-                }
-
-                {/* courses */}
-                <textBoxStyle.PossibleAnswers>
-                    <textBoxStyle.ProgamsTitle>
-                        Courses
-                    </textBoxStyle.ProgamsTitle>
-                    <textBoxStyle.ProgramContainer>
-                        {
-                            courses.map((coursesMap, index : number)=>{
-                                return(
-                                    <textBoxStyle.ProgramHeads 
-                                        onClick={()=>courseClick(coursesMap)}
-                                        key={index}>
-                                        {coursesMap.courseName}
-                                        <MdCancel
-                                            size={"16px"}
-                                            opacity={0.5}
-                                        />
-                                    </textBoxStyle.ProgramHeads>
-                                )
-                            })
-                        }
-                        <textBoxStyle.ProgramInput
-                            value={courseInput}
-                            onChange={(e)=>setCourseInput(e.target.value)}
-                            placeholder='search course name'
-                        />
-                    </textBoxStyle.ProgramContainer>
-                </textBoxStyle.PossibleAnswers>
-
-                {/* courses search container */}
-                {
-                    courseInput && searchCourses.length > 0 ?
-                    <textBoxStyle.SearchContainer>
-                        <textBoxStyle.ResultTitle>
-                            Results
-                        </textBoxStyle.ResultTitle>
-                        {
-                            searchCourses.map((searchCoursesMap, index : number)=>{
-                                return(
-                                    <Fragment key={index}>
-                                        <textBoxStyle.SearchItem
-                                            onClick={()=>searchCourseClick(searchCoursesMap)}
-                                        >
-                                            {searchCoursesMap.courseName}
-                                        </textBoxStyle.SearchItem>
-                                            <hr/>
-                                    </Fragment>
-                                )
-                            })
-                        }
-                    </textBoxStyle.SearchContainer> :
-                    <></>
-                }
-                {
-                    courseInput && searchCourses.length <= 0 ?   
-                    <textBoxStyle.SearchContainer>
-                        <textBoxStyle.NoResults>
-                            No Results found
-                        </textBoxStyle.NoResults>
-                    </textBoxStyle.SearchContainer>:
-                    <></>
-                }
-
-                {/* topics */}
-                <textBoxStyle.PossibleAnswers>
-                    <textBoxStyle.ProgamsTitle>
-                        Topics
-                    </textBoxStyle.ProgamsTitle>
-                    <textBoxStyle.ProgramContainer>
-                        {
-                            topics.map((topicsMap, index : number)=>{
-                                return(
-                                    <textBoxStyle.ProgramHeads 
-                                        onClick={()=>topicClick(topicsMap)}
-                                        key={index}>
-                                        {topicsMap.name}
-                                        <MdCancel
-                                            size={"16px"}
-                                            opacity={0.5}
-                                        />
-                                    </textBoxStyle.ProgramHeads>
-                                )
-                            })
-                        }
-                        <textBoxStyle.ProgramInput
-                            placeholder='search topic name'
-                            value={topicInput}
-                            onChange={(e)=>setTopicInput(e.target.value)}
-                        />
-                    </textBoxStyle.ProgramContainer>
-                </textBoxStyle.PossibleAnswers>
-
-                {/* program search container */}
-                {
-                    topicInput && searchTopics.length > 0 ?
-                    <textBoxStyle.SearchContainer>
-                        <textBoxStyle.ResultTitle>
-                            Results
-                        </textBoxStyle.ResultTitle>
-                        {
-                            searchTopics.map((searchTopicsMap, index : number)=>{
-                                return(
-                                    <Fragment key={index}>
-                                        <textBoxStyle.SearchItem
-                                            onClick={()=>searchTopicClick(searchTopicsMap)}
-                                        >
-                                            {searchTopicsMap.name}
-                                        </textBoxStyle.SearchItem>
-                                            <hr/>
-                                    </Fragment>
-                                )
-                            })
-                        }
-                    </textBoxStyle.SearchContainer> :
-                    <></>
-                }
-                {
-                    topicInput && searchTopics.length <= 0 ?   
-                    <textBoxStyle.SearchContainer>
-                        <textBoxStyle.NoResults>
-                            No Results found
-                        </textBoxStyle.NoResults>
-                    </textBoxStyle.SearchContainer>:
-                    <></>
-                }
-                <textBoxStyle.SaveQuestion
-                    onClick={()=>submitHandler()}
+                <i.AppTypography
+                    size={i.TypographySize.md}
+                    textColor={i.theme.colors2.gray.gray2}
                 >
-                    SAVE QUESTION
-                </textBoxStyle.SaveQuestion>
-            </textBoxStyle.Main>
+                    Add Question
+                </i.AppTypography>
+                <textBoxStyle.Main id='main'>
+                    <textBoxStyle.QuestionTop>
+                        <textBoxStyle.Title>
+                            Question
+                        </textBoxStyle.Title>
+                        <textBoxStyle.Question>
+                            <GeneralQuillEditorTextbox
+                                setValue={setQuestion}
+                            />
+                        </textBoxStyle.Question>
+                    </textBoxStyle.QuestionTop>
+                    <textBoxStyle.PossibleAnswers>
+                        <textBoxStyle.AnswerTiltle>
+                            Answers
+                        </textBoxStyle.AnswerTiltle>
+                        <textBoxStyle.Answers>
+                            {
+                                possibleAnswers.map((answerMap, index : number)=>{
+                                    return(
+                                        <textBoxStyle.AnswerSpan
+                                            key={index}
+                                        >
+                                            {
+                                                possibleAnswers.length > 1 &&
+                                                <textBoxStyle.CancelButton
+                                                    onClick={()=>deleteButton(index)}
+                                                >
+                                                    x
+                                                </textBoxStyle.CancelButton>
+                                            }
+                                            <textBoxStyle.Radio
+                                                onChange={(e)=>handleRadioChange(e)}
+                                                value={answerMap}
+                                                type={'radio'}
+                                                name={`radioGroup`}
+                                            />
+                                            {`${alphabets[index]})`}
+                                            <textBoxStyle.Answer>
+                                                <QuillEditorTextbox
+                                                    values={possibleAnswers}
+                                                    setValue={setPossibleAnswers}
+                                                    index={index}
+                                                />
+                                            </textBoxStyle.Answer>
+                                        </textBoxStyle.AnswerSpan>
+                                    )
+                                })
+                            }
+                            <textBoxStyle.AddAnswer
+                                onClick={()=>addButtonClick()}
+                            >
+                                +
+                            </textBoxStyle.AddAnswer>
+                        </textBoxStyle.Answers>
+                    </textBoxStyle.PossibleAnswers>
+
+                    {/* programs */}
+                    <textBoxStyle.PossibleAnswers>
+                        <textBoxStyle.ProgamsTitle>
+                            Programs
+                        </textBoxStyle.ProgamsTitle>
+                        <Tags 
+                            tags={programs2}
+                            setTags={setPrograms2}
+                            selectedTags={selectedPrograms2}
+                            setSelectedTags={setSelectedPrograms2}
+                        />
+                    </textBoxStyle.PossibleAnswers>
+
+                    {/* program search container */}
+                    {
+                        programInput && searchPrograms.length > 0 ?
+                        <textBoxStyle.SearchContainer>
+                            <textBoxStyle.ResultTitle>
+                                Results
+                            </textBoxStyle.ResultTitle>
+                            {
+                                searchPrograms.map((searchProgramsMap, index : number)=>{
+                                    return(
+                                        <Fragment key={index}>
+                                            <textBoxStyle.SearchItem
+                                                onClick={()=>searchProgramClick(searchProgramsMap)}
+                                            >
+                                                {searchProgramsMap.name}
+                                            </textBoxStyle.SearchItem>
+                                                <hr/>
+                                        </Fragment>
+                                    )
+                                })
+                            }
+                        </textBoxStyle.SearchContainer> :
+                        <></>
+                    }
+                    {
+                        programInput && searchPrograms.length <= 0 ?   
+                        <textBoxStyle.SearchContainer>
+                            <textBoxStyle.NoResults>
+                                No Results found
+                            </textBoxStyle.NoResults>
+                        </textBoxStyle.SearchContainer>:
+                        <></>
+                    }
+
+                    {/* courses */}
+                    <textBoxStyle.PossibleAnswers>
+                        <textBoxStyle.ProgamsTitle>
+                            Courses
+                        </textBoxStyle.ProgamsTitle>
+                        <textBoxStyle.ProgramContainer>
+                            {
+                                courses.map((coursesMap, index : number)=>{
+                                    return(
+                                        <textBoxStyle.ProgramHeads 
+                                            onClick={()=>courseClick(coursesMap)}
+                                            key={index}>
+                                            {coursesMap.courseName}
+                                            <MdCancel
+                                                size={"16px"}
+                                                opacity={0.5}
+                                            />
+                                        </textBoxStyle.ProgramHeads>
+                                    )
+                                })
+                            }
+                            <textBoxStyle.ProgramInput
+                                value={courseInput}
+                                onChange={(e)=>setCourseInput(e.target.value)}
+                                placeholder='search course name'
+                            />
+                        </textBoxStyle.ProgramContainer>
+                    </textBoxStyle.PossibleAnswers>
+
+                    {/* courses search container */}
+                    {
+                        courseInput && searchCourses.length > 0 ?
+                        <textBoxStyle.SearchContainer>
+                            <textBoxStyle.ResultTitle>
+                                Results
+                            </textBoxStyle.ResultTitle>
+                            {
+                                searchCourses.map((searchCoursesMap, index : number)=>{
+                                    return(
+                                        <Fragment key={index}>
+                                            <textBoxStyle.SearchItem
+                                                onClick={()=>searchCourseClick(searchCoursesMap)}
+                                            >
+                                                {searchCoursesMap.courseName}
+                                            </textBoxStyle.SearchItem>
+                                                <hr/>
+                                        </Fragment>
+                                    )
+                                })
+                            }
+                        </textBoxStyle.SearchContainer> :
+                        <></>
+                    }
+                    {
+                        courseInput && searchCourses.length <= 0 ?   
+                        <textBoxStyle.SearchContainer>
+                            <textBoxStyle.NoResults>
+                                No Results found
+                            </textBoxStyle.NoResults>
+                        </textBoxStyle.SearchContainer>:
+                        <></>
+                    }
+
+                    {/* topics */}
+                    <textBoxStyle.PossibleAnswers>
+                        <textBoxStyle.ProgamsTitle>
+                            Topics
+                        </textBoxStyle.ProgamsTitle>
+                        <textBoxStyle.ProgramContainer>
+                            {
+                                topics.map((topicsMap, index : number)=>{
+                                    return(
+                                        <textBoxStyle.ProgramHeads 
+                                            onClick={()=>topicClick(topicsMap)}
+                                            key={index}>
+                                            {topicsMap.name}
+                                            <MdCancel
+                                                size={"16px"}
+                                                opacity={0.5}
+                                            />
+                                        </textBoxStyle.ProgramHeads>
+                                    )
+                                })
+                            }
+                            <textBoxStyle.ProgramInput
+                                placeholder='search topic name'
+                                value={topicInput}
+                                onChange={(e)=>setTopicInput(e.target.value)}
+                            />
+                        </textBoxStyle.ProgramContainer>
+                    </textBoxStyle.PossibleAnswers>
+
+                    {/* program search container */}
+                    {
+                        topicInput && searchTopics.length > 0 ?
+                        <textBoxStyle.SearchContainer>
+                            <textBoxStyle.ResultTitle>
+                                Results
+                            </textBoxStyle.ResultTitle>
+                            {
+                                searchTopics.map((searchTopicsMap, index : number)=>{
+                                    return(
+                                        <Fragment key={index}>
+                                            <textBoxStyle.SearchItem
+                                                onClick={()=>searchTopicClick(searchTopicsMap)}
+                                            >
+                                                {searchTopicsMap.name}
+                                            </textBoxStyle.SearchItem>
+                                                <hr/>
+                                        </Fragment>
+                                    )
+                                })
+                            }
+                        </textBoxStyle.SearchContainer> :
+                        <></>
+                    }
+                    {
+                        topicInput && searchTopics.length <= 0 ?   
+                        <textBoxStyle.SearchContainer>
+                            <textBoxStyle.NoResults>
+                                No Results found
+                            </textBoxStyle.NoResults>
+                        </textBoxStyle.SearchContainer>:
+                        <></>
+                    }
+                    <textBoxStyle.SaveQuestion
+                        onClick={()=>submitHandler()}
+                    >
+                        SAVE QUESTION
+                    </textBoxStyle.SaveQuestion>
+                </textBoxStyle.Main>
+            </i.Flex>
         </>
     )
 }

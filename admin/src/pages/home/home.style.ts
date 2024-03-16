@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const Main = styled.div.attrs({
-    className : `Main w-full pr-[50px]
-    pt-[25px] flex justify-between gap-5`
+    className : `Main w-full pt-[50px] flex justify-center gap-5`
 })``
 
 export const MainLeft = styled.div.attrs({
@@ -14,4 +13,5 @@ export const Ads = styled.div.attrs({
     flex justify-center items-center`
 })`
     background : ${({theme}) => theme.colors.background.light.primary};
+    border : ${({theme}) => `0.5px solid ${theme.colors2.main.primary}1a`};
 `

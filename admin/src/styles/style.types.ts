@@ -2,6 +2,7 @@ import "styled-components";
 
 export enum TypographySize {
   xs = "11px",
+  xs2 = '12px',
   sm = "13px",
   sm2 = "15px",
   md = "16px",
@@ -27,6 +28,7 @@ export interface AppTypographyProps {
   display? : string
   ellipsis? : boolean
   maxLines? : number
+  lineHeight? : number
 }
 
 export interface buttonProps {
@@ -49,6 +51,8 @@ export interface flexProps {
   align ? : string,
   width ? : string,
   height ? : string
+  maxWidth ? : string
+  maxHeight ? : string
   textColor?: string;
   colorTheme? : string;
   flexWrap? : boolean
@@ -73,4 +77,7 @@ export interface hrProps {
 
 export interface clickableProps {
   cursor? : string
+  radius? : string
+  padding? : string
+  margin? : string
 }
