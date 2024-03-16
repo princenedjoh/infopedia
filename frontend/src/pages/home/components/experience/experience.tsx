@@ -32,7 +32,6 @@ const Experience = () => {
                 direction='column'
                 width={`${i.minimumWidth}px`}
                 align='center'
-                gap={20}
             >
                 <i.Flex
                     direction='column'
@@ -40,10 +39,17 @@ const Experience = () => {
                     align='center'
                     gap={5}
                 >
-                    <GiPowerLightning
-                        color={i.theme.colors2.main.primary}
-                        size={30}
-                    />
+                    <i.Flex
+                        width='fit-content'
+                        background={`${i.theme.colors2.main.primary}0d`}
+                        padding='15px'
+                        rounded='50%'
+                    >
+                        <GiPowerLightning
+                            color={i.theme.colors2.main.primary}
+                            size={26}
+                        />
+                    </i.Flex>
                     <i.AppTypography
                         size={i.TypographySize.lg2}
                         bold={i.TypographyBold.md}
@@ -83,6 +89,7 @@ const Experience = () => {
                                             {item.title}
                                         </i.AppTypography>
                                         <i.AppTypography
+                                            textColor={i.theme.colors2.gray.gray3}
                                             textAlign='center'
                                         >
                                             {item.text}

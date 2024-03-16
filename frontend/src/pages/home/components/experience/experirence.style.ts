@@ -13,9 +13,9 @@ export const ImageContainer = styled.div.attrs({
 `
 
 export const Container = styled.div.attrs({
-   className : ` Container rounded-[5px] cursor-default flex justify-center box-content items-center duration-300 h-[250px] w-[400px] shadow`
+   className : ` Container rounded-[5px] cursor-default flex justify-center items-center 
+   duration-300 h-[230px] w-[350px] `
 })<{background? : string}>`
-   border: ${({theme, background}) => `1px solid ${background ?? theme.colors2.main.primary}0d`};
    &:hover{
       border: ${({theme, background}) => `1px solid ${background ?? theme.colors2.main.primary}33`};
       box-shadow: ${({theme, background}) => `0px 0px 40px ${background ?? theme.colors2.main.primary}1d`};
